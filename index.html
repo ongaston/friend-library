@@ -48,6 +48,10 @@
 
         }
 
+        function checkSeries(e) {
+
+        }
+
         //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
         class Book {
@@ -67,12 +71,15 @@
         //let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments')
 
         class Series {
-            constructor(title, books) {
-                this.title = title;
-                this.books = books;
+            constructor(title) {
+                this.title = title.toLowerCase();
+                this.books = [];
             }
             getBooks() {
                 return this.books;
+            }
+            setBooks(value) {
+                this.books.push(value);
             }
         }
 
@@ -314,6 +321,14 @@
                                 break;
                             case 9:
                                 newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8]);
+                                if (seriesArray.some((e) => {e.title == newBook.series})) {
+                                    let found = seriesArray.find((e) => {e.title == newBook.series});
+                                    found.setBooks(newBook);
+                                } else {
+                                    let newSeries = new Series(newBook.series);
+                                    newSeries.setBooks(newBook);
+                                    seriesArray.push(newSeries);
+                                }
                                 break;
                         }
                         bookArray.push(newBook);
@@ -324,6 +339,7 @@
 
             }
             console.log(bookArray);
+            console.log(seriesArray);
 
           }
         </script>
