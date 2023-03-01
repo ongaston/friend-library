@@ -55,12 +55,13 @@
         //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
         class Book {
-            constructor(title, author, type, genres, status = 'N', comments = 'N', bookNumber = 'N', series = 'N') {
+            constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N') {
                 this.title = title.toLowerCase();
                 this.author = author.toLowerCase();
                 this.type = type.toLowerCase();
                 this.genres = formatGenres(genres);
                 this.status = status.toLowerCase();
+                this.seriesMember = seriesMember.toLowerCase();
                 this.comments = comments.toLowerCase();
                 this.bookNumber = bookNumber.toLowerCase();
                 this.series = series.toLowerCase();
