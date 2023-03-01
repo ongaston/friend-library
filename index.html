@@ -282,10 +282,22 @@
                                 newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
                                 break;
                             case 6:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
+                                if (bookInfo[4] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5]);
+                                } else {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
+                                }
                                 break;
                             case 7:
-                            newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
+                                if (bookInfo[4] == '' && bookInfo[5] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', 'N', bookInfo[6]);
+                                } else if(bookInfo[4] == '' && bookInfo[5] !== '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5], bookInfo[6]);
+                                } else if (bookInfo[4] !== '' && bookInfo[5] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], 'N', bookInfo[6]);
+                                } else {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
+                                }
                             break;
                         }
                         bookArray.push(newBook);
