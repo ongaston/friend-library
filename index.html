@@ -137,7 +137,7 @@
               // Fetch first 10 files
               response = await gapi.client.sheets.spreadsheets.values.batchGet({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                ranges: ["'Taylor\'s Bookshelf'!A:G;'Erica\'s Bookshelf'!A:G;'Emma\'s Bookshelf'!A:G;'Liv\'s Bookshelf'!A:G;'Brittany\'s Bookshelf'!A:G;'Haley\'s Bookshelf'!A:G;'Kenna\'s Bookshelf'!A:G;'Elyse\'s Bookshelf'!A:G"],
+                ranges: ["'Taylor\'s Bookshelf'!A:G; 'Erica\'s Bookshelf'!A:G; 'Emma\'s Bookshelf'!A:G; 'Liv\'s Bookshelf'!A:G; 'Brittany\'s Bookshelf'!A:G; 'Haley\'s Bookshelf'!A:G; 'Kenna\'s Bookshelf'!A:G; 'Elyse\'s Bookshelf'!A:G"],
               });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
