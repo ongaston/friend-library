@@ -136,8 +136,8 @@
             try {
               // Fetch first 10 files
               response = await gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '1aSSi9jk2gBEHXOZNg7AV7bJj0muFNyPLYwh2GXThvas',
-                range: 'Sheet1!A2:D',
+                spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
+                range: "'Taylor\'s Bookshelf'!A:G",
               });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
@@ -148,6 +148,7 @@
               document.getElementById('content').innerText = 'No values found.';
               return;
             }
+            console.log(range.values);
             const output = range.values.reduce(
                 (str, row) => `${str}${row[0]}, ${row[2]}\n`,
                 'Birds, Insects:\n');
