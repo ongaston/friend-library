@@ -30,6 +30,7 @@
     </main>
 
     <script type="text/javascript">
+
         let taylorSheet;
         let ericaSheet;
         let emmaSheet;
@@ -38,6 +39,76 @@
         let haleySheet;
         let kennaSheet;
         let elyseSheet;
+
+        function formatGenres(genres) {
+
+            genres = genres.split(';');
+            genres = genres.map(e => {return e.trim().toLowerCase()});
+            return genres;
+
+        }
+
+        //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
+
+        class Book {
+            constructor(title, author, type, genres, status, comments) {
+                this.title = title.toLowerCase();
+                this.author = author.toLowerCase();
+                this.type = type.toLowerCase();
+                this.genres = formatGenres(genres);
+                this.status = status.toLowerCase();
+                this.comments = comments.toLowerCase();
+
+            }
+        }
+
+        //let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments')
+
+        class Series {
+            constructor(title, books) {
+                this.title = title;
+                this.books = books;
+            }
+            getBooks() {
+                return this.books;
+            }
+        }
+
+        class Person {
+            constructor(name, sheet) {
+                this.name = name;
+                this.sheet = sheet;
+                this.bookshelf = name + "'s Bookshelf";
+                this.books = [];
+            }
+            get name() {
+                return this.name;
+            }
+            get sheet() {
+                return this.sheet;
+            }
+            get bookshelf() {
+                return this.bookshelf;
+            }
+            get books() {
+                return this.books
+            }
+            set books(books) {
+                this.books = books;
+            }
+        }
+
+        let taylor = new Person("Taylor", taylorSheet);
+        let erica = new Person("Erica", ericaSheet);
+        let brittany = new Person("Brittany", brittanySheet);
+        let emma = new Person("Emma", emmaSheet);
+        let liv = new Person("Liv", livSheet);
+        let haley = new Person("Haley", haleySheet);
+        let kenna = new Person("Kenna", kennaSheet);
+        let elyse = new Person("Elyse", elyseSheet);
+
+        let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
+        let bookArray = [];
 
         // You should set your Google client ID and Google API key
           const GOOGLE_CLIENT_ID = '568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com';
@@ -192,7 +263,37 @@
             console.log(haleySheet.result.values);
             console.log(kennaSheet.result.values);
             console.log(elyseSheet.result.values);
-            console.log(range)
+            
+            for (let i = 0; i < peopleArray.length; i++) {
+
+                for (let j = 1; j < peopleArray[i].sheet.length; j++) {
+
+                    if (!peopleArray[i].sheet[j].includes('Y')) {
+                        let bookInfo = peopleArray[i].sheet[j];
+                        let newBook;
+                        switch(bookInfo.length) {
+                            case 4:
+                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
+                                break;
+                            case 5:
+                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
+                                break;
+                            case 6:
+                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
+                                break;
+                            case 7:
+                            newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
+                            break;
+                        }
+                        bookArray.push(newBook);
+
+                    }
+
+                }
+
+            }
+            console.log(bookArray);
+
           }
         </script>
 
