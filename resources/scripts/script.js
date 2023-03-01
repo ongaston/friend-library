@@ -33,14 +33,14 @@ $(window).on('load', function() {
         documentText = text;
         documentText = $(documentText).find('script');
     documentText = documentText.prevObject[57].innerText.slice(503, 4255) + '\\n' + documentText.prevObject[59].innerText.slice(46, 1420);
-        console.log(documentText)
+        //console.log(documentText)
     for (let i = 0; i < peopleArray.length; i++) {  
 
         let index1 = documentText.indexOf(peopleArray[i].name);
-        console.log(index1)
+        //console.log(index1)
         let index2 = documentText.indexOf("Bookshelf", index1 + 30);
-        console.log(index2)
-        console.log(documentText.slice(index1, index2 - 10))
+        //console.log(index2)
+        //console.log(documentText.slice(index1, index2 - 10))
 
     } 
 
