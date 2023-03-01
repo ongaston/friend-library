@@ -4,3 +4,61 @@ Client ID:
 568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com
 Client secret: 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
 API KEY: AIzaSyASnWe7SMdFOyFdAiP-ksrKAeYkVwajbeo
+
+            for (let i = 0; i < peopleArray.length; i++) {
+                console.log(peopleArray[i]);
+                peopleArray[i].setSheet(peopleArray[i].getSheet());
+
+                for (let j = 1; j < peopleArray[i].sheet.length; j++) {
+
+                    if (!peopleArray[i].sheet[j].includes('Y')) {
+                        let bookInfo = peopleArray[i].sheet[j];
+                        let newBook;
+                        switch(bookInfo.length) {
+                            case 4:
+                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
+                                console.log(newBook);
+                                break;
+                            case 5:
+                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
+                                console.log(newBook);
+
+                                break;
+                            case 6:
+                                if (bookInfo[4] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5]);
+                                    console.log(newBook);
+
+                                } else {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
+                                    console.log(newBook);
+
+                                }
+                                break;
+                            case 7:
+                                if (bookInfo[4] == '' && bookInfo[5] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', 'N', bookInfo[6]);
+                                    console.log(newBook);
+
+                                } else if(bookInfo[4] == '' && bookInfo[5] !== '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5], bookInfo[6]);
+                                    console.log(newBook);
+
+                                } else if (bookInfo[4] !== '' && bookInfo[5] == '') {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], 'N', bookInfo[6]);
+                                    console.log(newBook);
+
+                                } else {
+                                    newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
+                                    console.log(newBook);
+
+                                }
+                            break;
+                        }
+                        bookArray.push(newBook);
+
+                    }
+
+                }
+
+            }
