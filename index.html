@@ -86,7 +86,7 @@
            */
           function maybeEnableButtons() {
             if (gapiInited && gisInited) {
-              document.getElementById('authorize_btn').style.visibility = 'visible';
+              //document.getElementById('authorize_btn').style.visibility = 'visible';
             }
           }
     
@@ -98,8 +98,8 @@
               if (resp.error !== undefined) {
                 throw (resp);
               }
-              document.getElementById('signout_btn').style.visibility = 'visible';
-              document.getElementById('authorize_btn').innerText = 'Refresh';
+              //document.getElementById('signout_btn').style.visibility = 'visible';
+              //document.getElementById('authorize_btn').innerText = 'Refresh';
               await listMajors();
             };
     
@@ -122,8 +122,8 @@
               google.accounts.oauth2.revoke(token.access_token);
               gapi.client.setToken('');
               document.getElementById('content').innerText = '';
-              document.getElementById('authorize_btn').innerText = 'Authorize';
-              document.getElementById('signout_btn').style.visibility = 'hidden';
+              //document.getElementById('authorize_btn').innerText = 'Authorize';
+              //document.getElementById('signout_btn').style.visibility = 'hidden';
             }
           }
     
