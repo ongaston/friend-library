@@ -91,7 +91,16 @@
                 return this.bookshelf;
             }
             get books() {
-                return this.books
+                return this.books;
+            }
+            set name(name) {
+                this.name = name; 
+            }
+            set sheet(sheet) {
+                this.sheet = sheet;
+            }
+            set bookshelf(name) {
+                this.bookshelf = name + "'s Bookshelf";
             }
             set books(books) {
                 this.books = books;
