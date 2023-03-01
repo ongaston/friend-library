@@ -81,16 +81,22 @@
                 this.bookshelf = name + "'s Bookshelf";
                 this.books = [];
             }
+            getSheet() {
+                return this.sheet;
+            }
+            setSheet(value) {
+                this.sheet = eval(value);
+            }
         }
 
-        let taylor = new Person("Taylor", taylorSheet);
-        let erica = new Person("Erica", ericaSheet);
-        let brittany = new Person("Brittany", brittanySheet);
-        let emma = new Person("Emma", emmaSheet);
-        let liv = new Person("Liv", livSheet);
-        let haley = new Person("Haley", haleySheet);
-        let kenna = new Person("Kenna", kennaSheet);
-        let elyse = new Person("Elyse", elyseSheet);
+        let taylor = new Person("Taylor", 'taylorSheet');
+        let erica = new Person("Erica", 'ericaSheet');
+        let brittany = new Person("Brittany", 'brittanySheet');
+        let emma = new Person("Emma", 'emmaSheet');
+        let liv = new Person("Liv", 'livSheet');
+        let haley = new Person("Haley", 'haleySheet');
+        let kenna = new Person("Kenna", 'kennaSheet');
+        let elyse = new Person("Elyse", 'elyseSheet');
 
         let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
         let bookArray = [];
@@ -261,6 +267,7 @@
             
             for (let i = 0; i < peopleArray.length; i++) {
                 console.log(peopleArray[i]);
+                peopleArray[i].setSheet(peopleArray[i].getSheet());
 
                 for (let j = 1; j < peopleArray[i].sheet.length; j++) {
 
