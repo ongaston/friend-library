@@ -100,7 +100,7 @@
               }
               //document.getElementById('signout_btn').style.visibility = 'visible';
               //document.getElementById('authorize_btn').innerText = 'Refresh';
-              await listMajors();
+              await getBooks();
             };
     
             if (gapi.client.getToken() === null) {
@@ -131,13 +131,13 @@
            * Print the names and majors of students in a sample spreadsheet:
            * https://docs.google.com/spreadsheets/d/1aSSi9jk2gBEHXOZNg7AV7bJj0muFNyPLYwh2GXThvas/edit
            */
-          async function listMajors() {
+          async function getBooks() {
             let response;
             try {
               // Fetch first 10 files
-              response = await gapi.client.sheets.spreadsheets.values.get({
+              response = await gapi.client.sheets.spreadsheets.values.batchGet({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Taylor\'s Bookshelf'!A:G",
+                ranges: ["'Taylor\'s Bookshelf'!A:G;'Erica\'s Bookshelf'!A:G;'Emma\'s Bookshelf'!A:G;'Liv\'s Bookshelf'!A:G;'Brittany\'s Bookshelf'!A:G;'Haley\'s Bookshelf'!A:G;'Kenna\'s Bookshelf'!A:G;'Elyse\'s Bookshelf'!A:G"],
               });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
@@ -148,7 +148,7 @@
               document.getElementById('content').innerText = 'No values found.';
               return;
             }
-            console.log(range.values);
+            console.log(ranges.values);
           }
         </script>
 
