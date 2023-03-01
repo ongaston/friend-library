@@ -277,26 +277,41 @@
                         switch(bookInfo.length) {
                             case 4:
                                 newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
+                                console.log(newBook);
                                 break;
                             case 5:
                                 newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
+                                console.log(newBook);
+
                                 break;
                             case 6:
                                 if (bookInfo[4] == '') {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5]);
+                                    console.log(newBook);
+
                                 } else {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
+                                    console.log(newBook);
+
                                 }
                                 break;
                             case 7:
                                 if (bookInfo[4] == '' && bookInfo[5] == '') {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', 'N', bookInfo[6]);
+                                    console.log(newBook);
+
                                 } else if(bookInfo[4] == '' && bookInfo[5] !== '') {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], 'N', bookInfo[5], bookInfo[6]);
+                                    console.log(newBook);
+
                                 } else if (bookInfo[4] !== '' && bookInfo[5] == '') {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], 'N', bookInfo[6]);
+                                    console.log(newBook);
+
                                 } else {
                                     newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
+                                    console.log(newBook);
+
                                 }
                             break;
                         }
