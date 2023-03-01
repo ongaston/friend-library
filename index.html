@@ -30,6 +30,14 @@
     </main>
 
     <script type="text/javascript">
+        let taylorSheet;
+        let ericaSheet;
+        let emmaSheet;
+        let livSheet;
+        let brittanySheet;
+        let haleySheet;
+        let kennaSheet;
+        let elyseSheet;
 
         // You should set your Google client ID and Google API key
           const GOOGLE_CLIENT_ID = '568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com';
@@ -132,14 +140,7 @@
            * https://docs.google.com/spreadsheets/d/1aSSi9jk2gBEHXOZNg7AV7bJj0muFNyPLYwh2GXThvas/edit
            */
           async function getBooks() {
-            let taylorSheet;
-            let ericaSheet;
-            let emmaSheet;
-            let livSheet;
-            let brittanySheet;
-            let haleySheet;
-            let kennaSheet;
-            let elyseSheet;
+
             try {
               // Fetch first 10 files
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
