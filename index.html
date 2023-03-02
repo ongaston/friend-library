@@ -42,6 +42,8 @@
           <p class='selected-info'>Fiction</p>
           <p class='selected-info'>TW: </p>
 
+          <a id='goodreads-link'></a>
+
         </div>
 
     </main>
@@ -300,35 +302,35 @@
               // Fetch first 10 files
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Taylor\'s Bookshelf'!A:I",
+                range: "'Taylor\'s Bookshelf'!A:K",
               });
               ericaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Erica\'s Bookshelf'!A:I",
+                range: "'Erica\'s Bookshelf'!A:K",
               });
               emmaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Emma\'s Bookshelf'!A:I",
+                range: "'Emma\'s Bookshelf'!A:K",
               });
               livSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Liv\'s Bookshelf'!A:I",
+                range: "'Liv\'s Bookshelf'!A:K",
               });
               brittanySheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Brittany\'s Bookshelf'!A:I",
+                range: "'Brittany\'s Bookshelf'!A:K",
               });
               haleySheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Haley\'s Bookshelf'!A:I",
+                range: "'Haley\'s Bookshelf'!A:K",
               });
               kennaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Kenna\'s Bookshelf'!A:I",
+                range: "'Kenna\'s Bookshelf'!A:K",
               });
               elyseSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Elyse\'s Bookshelf'!A:I",
+                range: "'Elyse\'s Bookshelf'!A:K",
               });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
@@ -381,10 +383,12 @@
                             newSeries.setBooks(newBook);
                             seriesArray.push(newSeries);
                         }
-                                
-                        }
+
                         newBook.setAlphabetical();
                         bookArray.push(newBook);
+                                
+                        }
+
 
                     }
 
