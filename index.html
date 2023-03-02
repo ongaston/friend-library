@@ -133,8 +133,6 @@
 
     <script type="text/javascript">
 
-  
-
         // You should set your Google client ID and Google API key
           const GOOGLE_CLIENT_ID = '568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com';
           const GOOGLE_API_KEY = 'AIzaSyASnWe7SMdFOyFdAiP-ksrKAeYkVwajbeo';
@@ -301,7 +299,7 @@
 
             
             for (let i = 0; i < peopleArray.length; i++) {
-                console.log(peopleArray[i]);
+
                 peopleArray[i].setSheet(peopleArray[i].getSheet());
 
                 for (let j = 1; j < peopleArray[i].sheet.length; j++) {
@@ -350,6 +348,7 @@
                                     let found = seriesArray.find((e) => {e.title == newBook.series});
                                     found.setBooks(newBook);
                                 } else {
+                                  let found = seriesArray.find((e) => {e.title == newBook.series});
                                     let newSeries = new Series(newBook.series);
                                     newSeries.setBooks(newBook);
                                     seriesArray.push(newSeries);
