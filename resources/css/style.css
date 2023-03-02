@@ -129,6 +129,10 @@ main {
     font-size: 18px;
 }
 
+#selected-cover {
+    width: auto;
+}
+
 #login-page {
     display: none;
 }
