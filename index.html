@@ -7,6 +7,7 @@
     <meta http-equiv="x-ua-compatible" content='ie=edge'>
     <title>Friend Library</title>
     <link rel='stylesheet' type='text/css' href='resources/css/reset.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' href='resources/css/style.css'>
     <script src="https://kit.fontawesome.com/a230460b96.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -16,8 +17,6 @@
 
     <header>
 
-      <nav id='nav-bar'></nav>
-
     </header>
 
     <div id='login-page'>
@@ -25,7 +24,6 @@
       <h1 id='page-title'>Friend Library</h1>
 
       <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>
-
 
     </div>
 
@@ -42,94 +40,100 @@
         $('#login-page').fadeOut().animate({
           display: 'none'
         });
-        $('body').css('display', 'inline-flex');
+        $('main').css('display', 'inline-flex');
 
       }
 
     </script>
 
+    <script type='text/javascript'>
+
+      let taylorSheet;
+      let ericaSheet;
+      let emmaSheet;
+      let livSheet;
+      let brittanySheet;
+      let haleySheet;
+      let kennaSheet;
+      let elyseSheet;
+
+      function formatGenres(genres) {
+
+          genres = genres.split(';');
+          genres = genres.map(e => {return e.trim().toLowerCase()});
+          return genres;
+
+      }
+
+      function checkSeries(e) {
+
+      }
+
+      //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
+
+      class Book {
+          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N') {
+              this.title = title.toLowerCase();
+              this.author = author.toLowerCase();
+              this.type = type.toLowerCase();
+              this.genres = formatGenres(genres);
+              this.status = status.toLowerCase();
+              this.seriesMember = seriesMember.toLowerCase();
+              this.comments = comments.toLowerCase();
+              this.bookNumber = bookNumber.toLowerCase();
+              this.series = series.toLowerCase();
+
+          }
+      }
+
+      //let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments')
+
+      class Series {
+          constructor(title) {
+              this.title = title.toLowerCase();
+              this.books = [];
+          }
+          getBooks() {
+              return this.books;
+          }
+          setBooks(value) {
+              this.books.push(value);
+          }
+      }
+
+      class Person {
+          constructor(name, sheet) {
+              this.name = name;
+              this.sheet = sheet;
+              this.bookshelf = name + "'s Bookshelf";
+              this.books = [];
+          }
+          getSheet() {
+              return this.sheet;
+          }
+          setSheet(value) {
+              this.sheet = eval(value);
+          }
+      }
+
+      let taylor = new Person("Taylor", 'taylorSheet');
+      let erica = new Person("Erica", 'ericaSheet');
+      let brittany = new Person("Brittany", 'brittanySheet');
+      let emma = new Person("Emma", 'emmaSheet');
+      let liv = new Person("Liv", 'livSheet');
+      let haley = new Person("Haley", 'haleySheet');
+      let kenna = new Person("Kenna", 'kennaSheet');
+      let elyse = new Person("Elyse", 'elyseSheet');
+
+      let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
+      let bookArray = [];
+      let seriesArray = [];
+
+    </script>
+
     <script type="text/javascript">
 
-        let taylorSheet;
-        let ericaSheet;
-        let emmaSheet;
-        let livSheet;
-        let brittanySheet;
-        let haleySheet;
-        let kennaSheet;
-        let elyseSheet;
-
-        function formatGenres(genres) {
-
-            genres = genres.split(';');
-            genres = genres.map(e => {return e.trim().toLowerCase()});
-            return genres;
-
-        }
-
-        function checkSeries(e) {
-
-        }
-
-        //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
-
-        class Book {
-            constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N') {
-                this.title = title.toLowerCase();
-                this.author = author.toLowerCase();
-                this.type = type.toLowerCase();
-                this.genres = formatGenres(genres);
-                this.status = status.toLowerCase();
-                this.seriesMember = seriesMember.toLowerCase();
-                this.comments = comments.toLowerCase();
-                this.bookNumber = bookNumber.toLowerCase();
-                this.series = series.toLowerCase();
-
-            }
-        }
-
-        //let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments')
-
-        class Series {
-            constructor(title) {
-                this.title = title.toLowerCase();
-                this.books = [];
-            }
-            getBooks() {
-                return this.books;
-            }
-            setBooks(value) {
-                this.books.push(value);
-            }
-        }
-
-        class Person {
-            constructor(name, sheet) {
-                this.name = name;
-                this.sheet = sheet;
-                this.bookshelf = name + "'s Bookshelf";
-                this.books = [];
-            }
-            getSheet() {
-                return this.sheet;
-            }
-            setSheet(value) {
-                this.sheet = eval(value);
-            }
-        }
-
-        let taylor = new Person("Taylor", 'taylorSheet');
-        let erica = new Person("Erica", 'ericaSheet');
-        let brittany = new Person("Brittany", 'brittanySheet');
-        let emma = new Person("Emma", 'emmaSheet');
-        let liv = new Person("Liv", 'livSheet');
-        let haley = new Person("Haley", 'haleySheet');
-        let kenna = new Person("Kenna", 'kennaSheet');
-        let elyse = new Person("Elyse", 'elyseSheet');
-
-        let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
-        let bookArray = [];
-        let seriesArray = [];
+  
 
         // You should set your Google client ID and Google API key
           const GOOGLE_CLIENT_ID = '568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com';
@@ -367,6 +371,9 @@
 
     <script async defer src='https://apis.google.com/js/api.js' onload='gapiLoaded()'></script>
     <script async defer src='https://accounts.google.com/gsi/client'onload='gisLoaded()'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
 </body>
 
