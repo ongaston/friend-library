@@ -45,12 +45,16 @@ body,
 
 body {
     flex-direction: column;
-    display: hidden;
+}
+
+main {
+    flex-direction: column;
+    display: none;
 }
 
 #authorize-button {
     position: absolute;
-    margin-top: 40%;
+    margin-top: 30rem;
 }
 
 #page-title {
@@ -59,7 +63,7 @@ body {
     text-decoration: underline;
     text-underline-offset: 1rem;
     position: absolute;
-    margin-top: 25%;
+    margin-top: 20rem;
     text-shadow: 3px 12px 12px var(--dark-green);
 }
 

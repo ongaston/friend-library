@@ -31,10 +31,6 @@
 
     <main>
 
-        <!--<object id='doc' type='text/html' data='https://docs.google.com/document/d/1-ZLjKlGju7nlxuxJAsEApgp0dH5_m9vAv-3FbVbvmXs/edit?usp=sharing' width='1000' height='200'></object>
-        <p id='data'></p>-->
-
-
         <pre id='content'></pre>
 
     </main>
@@ -43,8 +39,10 @@
 
       function hideLogin() {
 
-        $('#login-page').css('display', 'none');
-        $('main').css('display', 'inline-flex');
+        $('#login-page').fadeOut().animate({
+          display: 'none'
+        });
+        $('body').css('display', 'inline-flex');
 
       }
 
