@@ -27,22 +27,60 @@
 
     </div>
 
-    <main>
+    <main id='main'>
 
         <pre id='content'></pre>
+        
+        <div id='selected-book-container'>
+
+          <h1 id='selected-title'>Book Title</h1>
+
+          <h2 id='selected-author'>Author</h2>
+
+          <div class='status' id='selected-status'>status</div>
+
+          <p class='selected-info'>Fiction</p>
+          <p class='selected-info'>TW: </p>
+
+        </div>
 
     </main>
 
     <script type='text/javascript'>
+
+      function inlineToggle(obj) {
+          if ($(obj).css('display') == 'none') {
+              $(obj).slideToggle();
+              $(obj).css({
+                  display: 'inline-flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
+              })
+          } else if (obj.style.display == 'inline-flex') {
+              $(obj).slideToggle();
+          }
+      }
 
       function hideLogin() {
 
         $('#login-page').fadeOut().animate({
           display: 'none'
         });
-        $('main').css('display', 'inline-flex');
+        inlineToggle(document.getElementById('main'));
 
       }
+
+    </script>
+
+    <script type='text/javascript'>
+
+      let value1 = (document.getElementById('selected-title').getBoundingClientRect().right - document.getElementById('selected-status').getBoundingClientRect().left + 40);
+      $('#selected-status').css('left', (value1.toString().concat('px')));
+
+      let value2 = (document.getElementById('selected-title').getBoundingClientRect().bottom - document.getElementById('selected-status').getBoundingClientRect().bottom);
+      $("#selected-status").css('top', value2.toString().concat('px'));
+
+      
 
     </script>
 
@@ -65,14 +103,10 @@
 
       }
 
-      function checkSeries(e) {
-
-      }
-
-      //let testGenres = 'Historical Fiction;Sci-Fi; Romance';
+      let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
       class Book {
-          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N') {
+          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = 'N') {
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
@@ -82,22 +116,50 @@
               this.comments = comments.toLowerCase();
               this.bookNumber = bookNumber.toLowerCase();
               this.series = series.toLowerCase();
+              this.tw = tw.toLowerCase();
+              this.cover = cover.toLowerCase();
+              this.alphabeticalTitle;
+          }
+          getAlphabetical() {
+            return this.alphabeticalTitle;
+          }
+          setAlphabetical() {
+            if (this.title.substring(0,3) == 'the ') {
 
+              this.alphabeticalTitle = this.title.slice(4).concat(', the');
+
+            } else {
+              this.alphabeticalTitle = this.title;
+            }
           }
       }
 
-      //let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments')
+      let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments');
+
 
       class Series {
           constructor(title) {
               this.title = title.toLowerCase();
               this.books = [];
+              this.alphabeticalTitle;
           }
           getBooks() {
               return this.books;
           }
           setBooks(value) {
               this.books.push(value);
+          }
+          getAlphabetical() {
+            return this.alphabeticalTitle;
+          }
+          setAlphabetical() {
+            if (this.title.substring(0,3) == 'the ') {
+
+              this.alphabeticalTitle = this.title.slice(4).concat(', the');
+
+            } else {
+              this.alphabeticalTitle = this.title;
+            }
           }
       }
 
@@ -200,8 +262,6 @@
               if (resp.error !== undefined) {
                 throw (resp);
               }
-              //document.getElementById('signout_btn').style.visibility = 'visible';
-              //document.getElementById('authorize_btn').innerText = 'Refresh';
               hideLogin();
               await getBooks();
             };
@@ -306,54 +366,24 @@
 
                     if (!peopleArray[i].sheet[j].includes('Y')) {
                         let bookInfo = peopleArray[i].sheet[j];
-                        let newBook;
-                        switch(bookInfo.length) {
-                            case 4:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
-                                break;
-                            case 5:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
-                                break;
-                            case 6:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
-                                break;
-                            case 7:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
-                                break;
-                        }
+                        let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                        newBook.setAlphabetical();
                         bookArray.push(newBook);
 
                     } else {
                         let bookInfo = peopleArray[i].sheet[j];
-                        let newBook;
-                        switch(bookInfo.length) {
-                            case 4:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3]);
-                                break;
-                            case 5:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4]);
-                                break;
-                            case 6:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5]);
-                                break;
-                            case 7:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6]);
-                                break;
-                            case 8:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7]);
-                                break;
-                            case 9:
-                                newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8]);
-                                if (seriesArray.some((e) => {return e.title == newBook.series})) {
-                                    let found = seriesArray.find((e) => {return e.title == newBook.series});
-                                    found.setBooks(newBook);
-                                } else {
-                                    let newSeries = new Series(newBook.series);
-                                    newSeries.setBooks(newBook);
-                                    seriesArray.push(newSeries);
-                                }
-                                break;
+                        let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                        if (seriesArray.some((e) => {return e.title == newBook.series})) {
+                            let found = seriesArray.find((e) => {return e.title == newBook.series});
+                            found.setBooks(newBook);
+                        } else {
+                            let newSeries = new Series(newBook.series);
+                            newSeries.setBooks(newBook);
+                            seriesArray.push(newSeries);
                         }
+                                
+                        }
+                        newBook.setAlphabetical();
                         bookArray.push(newBook);
 
                     }
@@ -364,7 +394,7 @@
             console.log(bookArray);
             console.log(seriesArray);
 
-          }
+        
         </script>
 
     <script async defer src='https://apis.google.com/js/api.js' onload='gapiLoaded()'></script>
