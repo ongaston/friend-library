@@ -299,7 +299,6 @@
           async function getBooks() {
 
             try {
-              // Fetch first 10 files
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
                 range: "'Taylor\'s Bookshelf'!A:K",
@@ -366,37 +365,37 @@
 
                 for (let j = 1; j < peopleArray[i].sheet.length; j++) {
 
-                    if (!peopleArray[i].sheet[j].includes('Y')) {
-                        let bookInfo = peopleArray[i].sheet[j];
-                        let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
-                        newBook.setAlphabetical();
-                        bookArray.push(newBook);
+                  if (!peopleArray[i].sheet[j].includes('Y')) {
+                      let bookInfo = peopleArray[i].sheet[j];
+                      let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                      newBook.setAlphabetical();
+                      bookArray.push(newBook);
 
-                    } else {
-                        let bookInfo = peopleArray[i].sheet[j];
-                        let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
-                        if (seriesArray.some((e) => {return e.title == newBook.series})) {
-                            let found = seriesArray.find((e) => {return e.title == newBook.series});
-                            found.setBooks(newBook);
-                        } else {
-                            let newSeries = new Series(newBook.series);
-                            newSeries.setBooks(newBook);
-                            seriesArray.push(newSeries);
-                        }
+                  } else {
+                      let bookInfo = peopleArray[i].sheet[j];
+                      let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                      if (seriesArray.some((e) => {return e.title == newBook.series})) {
+                          let found = seriesArray.find((e) => {return e.title == newBook.series});
+                          found.setBooks(newBook);
+                      } else {
+                          let newSeries = new Series(newBook.series);
+                          newSeries.setBooks(newBook);
+                          seriesArray.push(newSeries);
+                      }
 
-                        newBook.setAlphabetical();
-                        bookArray.push(newBook);
-                                
-                        }
+                      newBook.setAlphabetical();
+                      bookArray.push(newBook);
+                              
+                      }
 
-
-                    }
 
                 }
 
             }
             console.log(bookArray);
             console.log(seriesArray);
+
+          }
 
         
         </script>
