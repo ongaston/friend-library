@@ -43,6 +43,7 @@
           <p class='selected-info'>TW: </p>
 
           <a id='goodreads-link'></a>
+          <img id='selected-cover'>
 
         </div>
 
@@ -394,6 +395,8 @@
             }
             console.log(bookArray);
             console.log(seriesArray);
+
+            $('#selected-cover').attr('href', bookArray[0].cover);
 
           }
 
