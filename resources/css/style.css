@@ -1,0 +1,85 @@
+
+:root {
+    --main-green: hsla(164, 23%, 23%, 1);
+    --light-green: hsla(164, 23%, 30%, 1);
+    --dark-green: hsla(164, 23%, 15%, 1);
+    --green-2: hsla(150, 23%, 23%, 1);
+    --light-green-2: hsla(150, 23%, 30%, 1);
+    --dark-green-2: hsla(150, 23%, 15%, 1);
+    --main-white: hsla(30, 44%, 89%, 1);
+    --light-white: hsla(30, 44%, 95%, 1);
+    --dark-white: hsla(30, 40%, 84%, 1);
+    --main-gold: hsla(32, 69%, 42%, 1);
+    --light-gold: hsla(32, 69%, 50%, 1);
+    --dark-gold: hsla(32, 69%, 35%, 1);
+    --darker-gold: hsla(32, 69%, 20%, 1);
+    --black-box-shadow: 0 3px 12px -1px rgba(0, 0, 0, 30%);
+    --dark-green-box: 0 3px 12px -1px hsla(164, 23%, 15%, 0.3);
+
+}
+
+html {
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: var(--main-green);
+    width: 100%;
+    height: 100%;
+}
+
+main,
+body,
+header,
+#login-page {
+    display: inline-flex;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100%;
+}
+
+main,
+body,
+#login-page {
+    height: 100%;
+}
+
+body {
+    flex-direction: column;
+    display: hidden;
+}
+
+#authorize-button {
+    position: absolute;
+    margin-top: 40%;
+}
+
+#page-title {
+    font-size: 72px;
+    color: var(--main-white);
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    position: absolute;
+    margin-top: 25%;
+    text-shadow: 3px 12px 12px var(--dark-green);
+}
+
+.button {
+    background-color: var(--main-white);
+    color: var(--darker-gold);
+    border: 3px solid var(--darker-gold);
+    border-radius: 60px;
+    box-shadow: var(--black-box-shadow);
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    padding: 0.5rem 1rem;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--light-white);
+}
+
+.button:active {
+    background-color: var(--dark-white);
+}
