@@ -349,6 +349,7 @@
                                     found.setBooks(newBook);
                                 } else {
                                   let found = seriesArray.find((e) => {e.title == newBook.series});
+                                  console.log(found)
                                     let newSeries = new Series(newBook.series);
                                     newSeries.setBooks(newBook);
                                     seriesArray.push(newSeries);
