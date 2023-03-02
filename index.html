@@ -344,7 +344,7 @@
                                 break;
                             case 9:
                                 newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8]);
-                                if (seriesArray.some((e) => {e.title == newBook.series})) {
+                                if (seriesArray.some((e) => {return e.title == newBook.series})) {
                                     let found = seriesArray.find((e) => {return e.title == newBook.series});
                                     found.setBooks(newBook);
                                 } else {
