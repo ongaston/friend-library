@@ -43,10 +43,6 @@ header,
     width: 100%;
 }
 
-#login-page {
-    height: 100%;
-}
-
 main,
 body {
     height: fit-content;
@@ -208,6 +204,9 @@ main {
 /* #region login */
 #login-page {
     z-index: 10;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
 }
 
 #authorize-button {
