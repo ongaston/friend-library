@@ -234,7 +234,7 @@
           display: 'none'
         });
         inlineToggle(document.getElementById('main'));
-        setTimeout(alignElements, 800);
+        setTimeout(alignElements, 200);
 
       }
 
@@ -243,6 +243,7 @@
         if ($('#selected-book-container').css('display') == 'none') {
           inlineToggle(document.getElementById('selected-book-container'));
           $('#selected-book-container').css('flex-direction', 'row');
+          alignElements();
         }
 
       }
