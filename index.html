@@ -54,6 +54,12 @@
             <a id='goodreads-link'></a>
   
           </div>
+          
+          <div id='selected-book-ratings'>
+
+            <h2 id='comments' class='selected-section'>Comments: </h2>
+
+          </div>
 
         </div>
 
@@ -137,7 +143,7 @@
       let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
       class Book {
-          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/Attachment-1.png') {
+          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/Attachment-1.png', owner) {
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
@@ -150,6 +156,7 @@
               this.tw = tw.toLowerCase();
               this.cover = cover;
               this.alphabeticalTitle = theToEnd(this.title);
+              this.owner = owner;
           }
           /*getAlphabetical() {
             return this.alphabeticalTitle;
@@ -396,13 +403,13 @@
 
                   if (!peopleArray[i].sheet[j].includes('Y')) {
                       let bookInfo = peopleArray[i].sheet[j];
-                      let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                      let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name);
                       newBook.setAlphabetical();
                       bookArray.push(newBook);
 
                   } else {
                       let bookInfo = peopleArray[i].sheet[j];
-                      let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10]);
+                      let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name);
                       if (seriesArray.some((e) => {return e.title == newBook.series})) {
                           let found = seriesArray.find((e) => {return e.title == newBook.series});
                           found.setBooks(newBook);
