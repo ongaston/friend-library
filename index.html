@@ -68,7 +68,24 @@
 
         <div id='browse-container'>
 
-          <div id='filter-container'>
+          <div id='filter-bar-container'>
+
+            <div id='filter-bar-content'>
+
+              <div id='filter-container'>
+
+                <p id='filter-label'>Filters<span id='plus-sign'><i class='fa-solid fa-plus'></i></span></p>
+
+              </div>
+
+              <div id='search-bar-container'>
+
+
+
+              </div>
+
+            </div>
+
           </div>
 
           <div id='book-list'>
@@ -86,6 +103,7 @@
       function fillSelected() {
 
         let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
+        console.log(book);
 
         
 
@@ -161,7 +179,9 @@
       setTimeout((e) => {
         let value4 = (document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left - 32);
         $('#selected-book-ratings').css('width', value4);
-      }, 400)
+      }, 400);
+      let value5 = (document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height);
+      $('#filter-bar-container').css('height', value5.toString().concat('px'));
 
     </script>
 
