@@ -89,7 +89,6 @@ main {
 
 #selected-book-container {
     display: inline-flex;
-    flex-direction: column;
     background-color: var(--green-2);
     width: 98%;
     height: 25rem;
@@ -97,6 +96,23 @@ main {
     border: solid 3px var(--main-white);
     border-radius: 10px;
     box-shadow: var(--black-box-shadow);
+    position: relative;
+}
+
+#selected-cover-container {
+    margin: auto 1rem;
+}
+
+#selected-cover {
+    margin: auto;
+    max-height: 23rem;
+    width: auto;
+}
+
+#selected-book-info-container {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 1rem auto 0;
     position: relative;
 }
 
