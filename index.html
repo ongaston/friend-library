@@ -80,7 +80,7 @@
 
               <div id='search-bar-container'>
 
-
+                <input id='search-bar' type='search' placeholder='Search'>
 
               </div>
 
@@ -90,7 +90,14 @@
 
           <div id='book-list'>
 
+            <!--<div id = 'test-book' class='book-container' data-title="cain's jawbone">
 
+              <img class='book-cover' src='resources/media/test-cover.jpg'>
+
+              <p class='book-title'>Cain's Jawbone</p>
+              <p class='book-author'>Edward Powys Mathers</p>
+
+            </div>-->
 
           </div>
 
@@ -100,14 +107,68 @@
 
     <script type='text/javascript'>
 
+      function normalizeString(normalize) {
+            let temp = normalize.split;
+            for (let i = 0; i < temp.length; i++) {
+              temp[i] = temp[i][0].toUpperCase().concat(temp[i].substring[1]);
+            }
+            temp = temp.join();
+            return temp.trim();
+      }
+
+      function createBookElement(book) {
+
+        let bookContainer = document.createElement('div');
+        bookContainer.setAttribute('class', 'book-container');
+        bookContainer.setAttribute('data-title', book.title);
+
+        let bookCover = document.createElement('img');
+        bookCover.setAttribute('class', 'book-cover');
+        bookCover.setAttribute('src', book.cover);
+
+        let bookTitle = document.createElement('p');
+        bookTitle.setAttribute('class', 'book-title');
+        bookTitle.innerText = normalizeString(book.title);
+        
+        let bookAuthor = document.createElement('p');
+        bookAuthor.setAttribute('class', 'book-author');
+        bookAuthor.innerText = normalizeString(book.author);
+
+        document.getElementById('book-list').appendChild(bookContainer);
+        bookContainer.appendChild(bookCover);
+        bookContainer.appendChild(bookTitle);
+        bookContainer.appendChild(bookAuthor);
+
+        $(bookContainer).on('click', fillSelected);
+
+      }
+
       function fillSelected() {
 
         let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
         console.log(book);
 
+        document.getElementById('selected-cover').setAttribute('src', 'resources/media/test-cover.jpg');
+        document.getElementById('selected-title').innerText = "Cain's Jawbone";
+        document.getElementById('selected-author').innerText = "Edward Powys Mathers";
+        document.getElementById('selected-status').setAttribute('class', 'status'.concat(''));
+        document.getElementById('fiction-non-fiction').innerText = 'Fiction';
+        document.getElementById('tw').innerText = 'TW: '.concat('');
+        document.getElementById('owners').innerText = 'Owners: '.concat('');
         
+        //alignElements();
 
       }
+
+      //$('#test-book').on('click', fillSelected);
+
+    </script>
+
+    <script type='text/javascript'>
+
+      /*$('#search-bar').on('keyup', function() {
+
+      })*/
 
     </script>
 
@@ -167,21 +228,34 @@
 
     <script type='text/javascript'>
 
-      let value1 = (document.getElementById('selected-title').getBoundingClientRect().right - document.getElementById('selected-status').getBoundingClientRect().left + 40);
-      $('#selected-status').css('left', (value1.toString().concat('px')));
+      function alignElements() {
+        $('#selected-status').css('left', 0);
+        let value1 = (Math.abs(document.getElementById('selected-title').getBoundingClientRect().right - document.getElementById('selected-status').getBoundingClientRect().left) + 40);
+        $('#selected-status').css('left', (value1.toString().concat('px')));
 
-      let value2 = (document.getElementById('selected-title').getBoundingClientRect().bottom - document.getElementById('selected-status').getBoundingClientRect().bottom);
-      $("#selected-status").css('top', value2.toString().concat('px'));
+        $('#selected-status').css('top', 0);
+        let value2 = (Math.abs(document.getElementById('selected-title').getBoundingClientRect().bottom - document.getElementById('selected-status').getBoundingClientRect().bottom));
+        $("#selected-status").css('top', value2.toString().concat('px'));
 
-      let value3 = (document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left + 60);
-      $('#selected-book-ratings').css('left', value3.toString().concat('px'));
+        $('#selected-book-ratings').css('left', 0);
+        let value3 = (Math.abs(document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left) + 60);
+        $('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
-      setTimeout((e) => {
-        let value4 = (document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left - 32);
-        $('#selected-book-ratings').css('width', value4);
-      }, 400);
-      let value5 = (document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height);
-      $('#filter-bar-container').css('height', value5.toString().concat('px'));
+        setTimeout((e) => {
+          $('#selected-book-ratings').css('width', 0);
+          let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
+          $('#selected-book-ratings').css('width', value4);
+        }, 400);
+
+        let value5 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height));
+        $('#filter-bar-container').css('height', value5.toString().concat('px'));
+
+        let value6 = (Math.abs(document.getElementById('main').getBoundingClientRect().height - document.getElementById('filter-bar-container').getBoundingClientRect().height) - 10);
+        $('#book-list').css('height', value6);
+
+      }
+
+      alignElements();
 
     </script>
 
@@ -221,6 +295,15 @@
               this.cover = cover;
               this.alphabeticalTitle = theToEnd(this.title);
               this.owner = owner;
+          }
+          /*normalizeTitle() {
+            let temp = this.title.split;
+            for (let i = 0; i < temp.length; i++) {
+              temp[i] = temp[i][0].toUpperCase().concat(temp[i].substring[1]);
+            }
+            temp = temp.join();
+            return temp.trim();
+
           }
           /*getAlphabetical() {
             return this.alphabeticalTitle;
@@ -499,6 +582,12 @@
               if (noCopyArray.every((e => {return e.title !== bookArray[i].title}))) {
                 noCopyArray.push(bookArray[i]);
               }
+            }
+
+            for (let i = 0; i < 21; i++) {
+
+
+
             }
 
           }

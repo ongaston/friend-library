@@ -6,7 +6,7 @@
     --light-green-2: hsla(150, 23%, 30%, 1);
     --dark-green-2: hsla(150, 23%, 15%, 1);
     --main-white: hsla(30, 40%, 84%, 1);
-    --light-white: hsla(30, 44%, 95%, 1);
+    --light-white:hsla(30, 44%, 89%, 1);
     --dark-white: hsla(30, 35%, 84%, 1);
     --main-gold: hsla(32, 69%, 42%, 1);
     --light-gold: hsla(32, 69%, 50%, 1);
@@ -16,6 +16,8 @@
     --light-red: hsla(7, 44%, 36%, 1);
     --dark-red: hsla(7, 44%, 20%, 1);
     --main-blue: hsla(190, 77%, 12%, 1);
+    --light-blue: hsla(190, 77%, 16%, 1);
+    --dark-blue: hsla(190, 77%, 8%, 1);
     --main-purple: hsla(254, 23%, 17%, 1);
     --black-box-shadow: 0 3px 12px -1px rgba(0, 0, 0, 30%);
     --dark-green-box: 0 0 12px -1px hsla(164, 23%, 10%, 0.7);
@@ -180,6 +182,7 @@ main {
 .selected-section-title {
     color: var(--main-white);
     font-size: 24px;
+    text-shadow: var(--dark-green-text-shadow);
 }
 
 #comments {
@@ -191,6 +194,7 @@ main {
     font-size: 18px;
     color: var(--main-blue);
     padding: 0.5rem;
+    box-shadow: var(--black-box-shadow);
 }
 
 /* #endregion */
@@ -217,8 +221,7 @@ main {
 
 /* #endregion */
 
-
-
+/* #region browse */
 #browse-container {
     display: inline-flex;
     flex-direction: column;
@@ -229,32 +232,106 @@ main {
     border: 4px solid var(--main-white);
     border-radius: 10px;
     align-self: center;
+    
 }
 
-#filter-bar-container {
-    display: inline-flex;
-    width: 100%;
-    background-color: var(--dark-green);
-    border-radius: 10px;
-    align-content: end;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-}
+    /* #region filter */
+    #filter-bar-container {
+        display: inline-flex;
+        width: 100%;
+        background-color: var(--dark-green);
+        border-radius: 10px;
+        align-content: end;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
 
-#filter-label {
-    margin-left: 2rem;
-    color: var(--main-white);
-}
+    #filter-bar-content {
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-between;
+    }
 
-#filter-label:hover {
-    cursor: pointer;
-    color: var(--light-white);
-}
+    #filter-label {
+        margin-left: 2rem;
+        color: var(--main-white);
+        text-shadow: var(--black-text-shadow);
+    }
 
-#filter-label:active {
-    color: var(--dark-white);
-}
+    #filter-label:hover {
+        cursor: pointer;
+        color: var(--light-white);
+    }
 
-span {
-    margin-left: 0.5rem;
-}
+    #filter-label:active {
+        color: var(--dark-white);
+    }
+
+    span {
+        margin-left: 0.5rem;
+    }
+
+    #search-bar {
+        margin-right: 2rem;
+        background-color: var(--main-white);
+        border: 2px solid var(--main-green);
+        border-radius: 50px;
+        width: 20rem;
+        box-shadow: var(--black-box-shadow);
+    }
+
+    /* #endregion */
+
+    #book-list {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+        border: 3px groove var(--light-white);
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        align-items: start;
+    }
+
+    .book-container {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 20%;
+        background-color: var(--main-blue);
+        box-shadow: var(--black-box-shadow);
+        border: 2px groove var(--dark-blue);
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin: 1rem 0;
+        max-height: 20rem;
+    }
+
+    .book-container:hover {
+        cursor: pointer;
+        background-color: var(--light-blue);
+    }
+
+    .book-cover {
+        max-width: 95px;
+        border: 1px solid var(--main-white);
+    }
+
+    .book-title {
+        color: var(--main-white);
+        text-shadow: var(--black-text-shadow);
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    .book-author {
+        color: var(--dark-white);
+        text-shadow: var(--black-text-shadow);
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+/* #endregion */
