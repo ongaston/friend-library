@@ -524,14 +524,14 @@
               document.getElementById('content').innerText = 'No values found.';
               return;
             }
-            console.log(range.values);
+            /*console.log(range.values);
             console.log(ericaSheet.result.values);
             console.log(emmaSheet.result.values);
             console.log(livSheet.result.values);
             console.log(brittanySheet.result.values);
             console.log(haleySheet.result.values);
             console.log(kennaSheet.result.values);
-            console.log(elyseSheet.result.values);
+            console.log(elyseSheet.result.values);*/
 
             taylorSheet = range.values;
             ericaSheet = ericaSheet.result.values;
@@ -587,7 +587,7 @@
             for (let i = 0; i < 21; i++) {
 
               createBookElement(noCopyArray[i]);
-
+              console.log(noCopyArray[i])
             }
 
           }
