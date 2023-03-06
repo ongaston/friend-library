@@ -50,6 +50,7 @@
   
             <p class='selected-info'>Fiction</p>
             <p class='selected-info'>TW: </p>
+            <p class='selected-info'>Owner(s): </p>
   
             <a id='goodreads-link'></a>
   
@@ -228,6 +229,7 @@
       let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
       let bookArray = [];
       let seriesArray = [];
+      let noCopyArray = [];
 
     </script>
 
@@ -431,10 +433,17 @@
             console.log(bookArray);
             console.log(seriesArray);
 
+            bookArray.forEach(function(e, i) {
+              if (i == bookArray.lastIndexOf(e)) {
+                noCopyArray.push(e);
+              }
+            })
+            console.log(noCopyArray);
+
           }
 
         
-        </script>
+    </script>
 
     <script async defer src='https://apis.google.com/js/api.js' onload='gapiLoaded()'></script>
     <script async defer src='https://accounts.google.com/gsi/client'onload='gisLoaded()'></script>
