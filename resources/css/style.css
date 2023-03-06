@@ -115,7 +115,7 @@ main {
 
 /* #region selected */
 #selected-book-container {
-    display: inline-flex;
+    display: none;
     background-color: var(--green-2);
     width: 98%;
     height: 25rem;
