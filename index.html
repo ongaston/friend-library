@@ -447,13 +447,11 @@
             console.log(bookArray);
             console.log(seriesArray);
 
-            bookArray.forEach(function(e, i, a) {
-              if (i == a.lastIndexOf(e)) {
-                console.log(i)
-                console.log(a.lastIndexOf(e))
-                noCopyArray.push(e);
+            for (let i = 0; i < bookArray.length; i++) {
+              if (noCopyArray.every((e => {return e.title !== bookArray[i].title}))) {
+                noCopyArray.push(bookArray[i]);
               }
-            })
+            }
             console.log(noCopyArray);
 
           }
