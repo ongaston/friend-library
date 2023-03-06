@@ -113,6 +113,14 @@
               temp[i] = temp[i][0].toUpperCase() + (temp[i].substring(1));
             }
             temp = temp.join(' ');
+
+            if (temp.length > 20) {
+
+              let check = temp.trim().substring(0, 19);
+              return check.trim().concat('...');
+
+            }
+
             return temp.trim();
       }
 
