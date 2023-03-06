@@ -113,10 +113,12 @@
               temp[i] = temp[i][0].toUpperCase().concat(temp[i].substring[1]);
             }
             temp = temp.join();
+            console.log(temp);
             return temp.trim();
       }
 
       function createBookElement(book) {
+        console.log(book.title);
 
         let bookContainer = document.createElement('div');
         bookContainer.setAttribute('class', 'book-container');
