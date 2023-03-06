@@ -46,7 +46,7 @@
   
             <h2 id='selected-author'>Author</h2>
   
-            <div class='status' id='selected-status'>status</div>
+            <div class='status' id='selected-status'></div>
   
             <p class='selected-info' id='fiction-non-fiction'>Fiction</p>
             <p class='selected-info' id='tw'>TW: </p>
@@ -124,9 +124,7 @@
             return temp.trim();
       }
 
-
       function createBookElement(book) {
-        console.log(book.title);
 
         let bookContainer = document.createElement('div');
         bookContainer.setAttribute('class', 'book-container');
@@ -156,15 +154,14 @@
       function fillSelected() {
 
         let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
-        console.log(book);
 
-        document.getElementById('selected-cover').setAttribute('src', 'resources/media/test-cover.jpg');
-        document.getElementById('selected-title').innerText = "Cain's Jawbone";
-        document.getElementById('selected-author').innerText = "Edward Powys Mathers";
-        document.getElementById('selected-status').setAttribute('class', 'status'.concat(''));
-        document.getElementById('fiction-non-fiction').innerText = 'Fiction';
-        document.getElementById('tw').innerText = 'TW: '.concat('');
-        document.getElementById('owners').innerText = 'Owners: '.concat('');
+        document.getElementById('selected-cover').setAttribute('src', book.cover);
+        document.getElementById('selected-title').innerText = normalizeString(book.title);
+        document.getElementById('selected-author').innerText = normalizeString(book.author);
+        document.getElementById('selected-status').setAttribute('class', 'status-'.concat(book.status));
+        document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type);
+        document.getElementById('tw').innerText = 'TW: ' + (book.tw);
+        document.getElementById('owners').innerText = 'Owners: ' + findOwners(book.title);
         
         alignElements();
 
@@ -205,7 +202,7 @@
             owners.push(bookArray[i].owner);
           }
         }
-        return owners;
+        return owners.join(' ');
       }
 
     </script>
@@ -596,7 +593,6 @@
 
             for (let i = 0; i < 21; i++) {
 
-              console.log(noCopyArray[i])
               createBookElement(noCopyArray[i]);
 
             }
