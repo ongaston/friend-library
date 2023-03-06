@@ -48,24 +48,50 @@
   
             <div class='status' id='selected-status'>status</div>
   
-            <p class='selected-info'>Fiction</p>
-            <p class='selected-info'>TW: </p>
-            <p class='selected-info'>Owner(s): </p>
-  
-            <a id='goodreads-link'></a>
+            <p class='selected-info' id='fiction-non-fiction'>Fiction</p>
+            <p class='selected-info' id='tw'>TW: </p>
+            <p class='selected-info' id='owners'>Owner(s): </p>
   
           </div>
           
           <div id='selected-book-ratings'>
 
             <h2 id='comments-title' class='selected-section-title'>Comments: </h2>
-            <p id='comments'>test</p>
+            <p id='comments'></p>
+
+            <!--<h2 class='selected-section-title'>Goodreads Link</h2>
+            <a id='goodreads-link'></a>-->
+
+          </div>
+
+        </div>
+
+        <div id='browse-container'>
+
+          <div id='filter-container'>
+          </div>
+
+          <div id='book-list'>
+
+
 
           </div>
 
         </div>
 
     </main>
+
+    <script type='text/javascript'>
+
+      function fillSelected() {
+
+        let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
+
+        
+
+      }
+
+    </script>
 
     <script type='text/javascript'>
 
@@ -90,7 +116,7 @@
             owners.push(bookArray[i].owner);
           }
         }
-
+        return owners;
       }
 
     </script>
@@ -132,8 +158,10 @@
       let value3 = (document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left + 60);
       $('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
-      let value4 = (document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left - 32);
-      $('#selected-book-ratings').css('width', value4);
+      setTimeout((e) => {
+        let value4 = (document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left - 32);
+        $('#selected-book-ratings').css('width', value4);
+      }, 400)
 
     </script>
 
@@ -452,7 +480,6 @@
                 noCopyArray.push(bookArray[i]);
               }
             }
-            console.log(noCopyArray);
 
           }
 
