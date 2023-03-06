@@ -302,7 +302,7 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 23%;
+        width: 15%;
         background-color: var(--main-blue);
         box-shadow: var(--black-box-shadow);
         border: 2px groove var(--dark-blue);
