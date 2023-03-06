@@ -411,7 +411,6 @@
                   if (!peopleArray[i].sheet[j].includes('Y')) {
                       let bookInfo = peopleArray[i].sheet[j];
                       let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name);
-                      newBook.setAlphabetical();
                       bookArray.push(newBook);
 
                   } else {
@@ -426,7 +425,7 @@
                           seriesArray.push(newSeries);
                       }
 
-                      newBook.setAlphabetical();
+
                       bookArray.push(newBook);
                               
                       }
