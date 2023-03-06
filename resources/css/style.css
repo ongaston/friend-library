@@ -31,7 +31,7 @@ html {
     text-align: center;
     background-color: var(--main-green);
     width: 100%;
-    height: fit-content;
+    height: auto;
 }
 
 body,
@@ -207,11 +207,13 @@ main {
     height: 100%;
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #authorize-button {
     position: absolute;
-    margin-top: 30rem;
+    top: 30rem;
 }
 
 #page-title {
@@ -220,7 +222,7 @@ main {
     text-decoration: underline;
     text-underline-offset: 1rem;
     position: absolute;
-    margin-top: 20rem;
+    top: 20rem;
     text-shadow: 3px 12px 12px var(--dark-green);
 }
 
