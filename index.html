@@ -161,7 +161,8 @@
         document.getElementById('selected-status').setAttribute('class', 'status-'.concat(book.status));
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type);
         document.getElementById('tw').innerText = 'TW: ' + (book.tw);
-        document.getElementById('owners').innerText = 'Owners: ' + findOwners(book.title);
+        document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
+        document.getElementById('comments').innerText = book.comments;
         
         alignElements();
 
@@ -248,11 +249,11 @@
         let value3 = (Math.abs(document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left) + 60);
         $('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
-        setTimeout((e) => {
+
           $('#selected-book-ratings').css('width', 0);
           let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
           $('#selected-book-ratings').css('width', value4);
-        }, 400);
+
 
         let value5 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height));
         $('#filter-bar-container').css('height', value5.toString().concat('px'));
