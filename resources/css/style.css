@@ -165,6 +165,9 @@ main {
     border: 3px solid var(--main-blue);
     border-radius: 10px;
     background-color: var(--main-white);
+    font-size: 18px;
+    color: var(--main-blue);
+    padding: 0.5rem;
 }
 
 #login-page {

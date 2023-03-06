@@ -59,7 +59,7 @@
           <div id='selected-book-ratings'>
 
             <h2 id='comments-title' class='selected-section-title'>Comments: </h2>
-            <p id='comments'></p>
+            <p id='comments'>test</p>
 
           </div>
 
@@ -80,6 +80,16 @@
           return title;
 
         }  
+
+      }
+
+      function findOwners(title) {
+        let owners = [];
+        for (let i = 0; i < bookArray.length; i++) {
+          if (bookArray[i].title == title) {
+            owners.push(bookArray[i].owner);
+          }
+        }
 
       }
 
@@ -439,6 +449,7 @@
 
             bookArray.forEach(function(e, i) {
               if (i == bookArray.lastIndexOf(e)) {
+                console.log(i)
                 noCopyArray.push(e);
               }
             })
