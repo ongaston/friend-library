@@ -77,7 +77,6 @@ body {
 }
 
 main {
-    display: inline-flex;
     font-family: Georgia, 'Times New Roman', Times, serif;
     flex-direction: column;
     display: none;
@@ -169,7 +168,8 @@ main {
     color: var(--dark-white);
     text-shadow: var(--black-text-shadow);
     margin-left: 3rem;
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 0;
 }
 
 #selected-book-ratings {
@@ -196,6 +196,19 @@ main {
     color: var(--main-blue);
     padding: 0.5rem;
     box-shadow: var(--black-box-shadow);
+}
+
+#selected-genres-container {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+#genre-container {
+    display: inline-flex;
+    flex-wrap: wrap;
 }
 
 /* #endregion */
@@ -267,7 +280,7 @@ main {
 }
 
 #filter-label {
-    margin-left: 2rem;
+    margin: 0.5rem 1rem;
     color: var(--main-white);
     text-shadow: var(--black-text-shadow);
 }

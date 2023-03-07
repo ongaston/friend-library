@@ -23,6 +23,18 @@
 
     </header>
 
+    <script type='text/javascript'>
+
+      function testingView() {
+        $('#login-page').css('display', 'none');
+        $('main').css('display', 'inline-flex');
+        $('#selected-book-container').css('display', 'inline-flex');
+      }
+
+      $(window).on('load', testingView);
+
+    </script>
+
     <div id='login-page'>
 
       <h1 id='page-title'>Friend Library</h1>
@@ -39,7 +51,7 @@
 
           <div id='selected-cover-container'>
 
-            <img id='selected-cover' src='resources/media/Attachment-1.png'>
+            <img id='selected-cover' src='resources/media/no-cover.png'>
 
           </div>
 
@@ -54,6 +66,13 @@
             <p class='selected-info' id='fiction-non-fiction'>Fiction</p>
             <p class='selected-info' id='tw'>TW: </p>
             <p class='selected-info' id='owners'>Owner(s): </p>
+
+            <div id='selected-genres-container'>
+
+              <h2 class='selected-section-title'>Genres:</h2>
+              <div id='genre-container'></div>
+
+            </div>
   
           </div>
           
@@ -269,9 +288,11 @@
         $('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
 
-          $('#selected-book-ratings').css('width', 0);
-          let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
-          $('#selected-book-ratings').css('width', value4);
+        $('#selected-book-ratings').css('width', 0);
+        let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
+        $('#selected-book-ratings').animate({
+          width: value4
+        });
 
 
         let value5 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height));
