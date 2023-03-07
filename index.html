@@ -5,6 +5,8 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="x-ua-compatible" content='ie=edge'>
+    <meta name='google-signin-client_id' content='568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com'>
+    <meta name='referrer' content='no-referrer-when-downgrade'>
     <title>Friend Library</title>
     <link rel='icon' type='image/x-con' href='resources/media/Elyse.png'>
     <link rel='stylesheet' type='text/css' href='resources/css/reset.css'>
@@ -12,6 +14,7 @@
     <link rel='stylesheet' type='text/css' href='resources/css/style.css'>
     <script src="https://kit.fontawesome.com/a230460b96.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 </head>
 
 <body>
@@ -470,6 +473,7 @@
             tokenClient = google.accounts.oauth2.initTokenClient({
               client_id: GOOGLE_CLIENT_ID,
               scope: SCOPES,
+              auto_select: 'true',
               callback: '', // defined later
             });
             gisInited = true;

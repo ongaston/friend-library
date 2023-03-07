@@ -123,6 +123,7 @@ main {
     border: solid 3px var(--dark-green);
     border-radius: 10px;
     box-shadow: var(--black-box-shadow);
+    position: relative;
 }
 
 #selected-cover-container {
