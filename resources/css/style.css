@@ -209,6 +209,7 @@ main {
 #genre-container {
     display: inline-flex;
     flex-wrap: wrap;
+    min-height: 6rem;
 }
 
 /* #endregion */
