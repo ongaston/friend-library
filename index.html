@@ -201,15 +201,21 @@
         if (book.status !== 'n') {
           document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
           document.getElementById('selected-status').innerText = normalizeString(book.status, false);
+        } else {
+          document.getElementById('selected-status').innerText = '';
+          document.getElementById('selected-status').setAttribute('class', 'status');
         }
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type, false);
         if (book.tw !== 'n') {
           document.getElementById('tw').innerText = 'TW: ' + (book.tw);
+        } else {
+          document.getElementById('tw').innerText = 'TW: ';
         }
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
         if (book.comments !== 'n') {
           document.getElementById('comments').innerText = book.comments;
-
+        } else {
+          document.getElementById('comments').innerText = '';
         }
 
         $('#genre-container').empty();
