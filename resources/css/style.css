@@ -61,6 +61,7 @@ body {
     border-radius: 30px;
     width: 5rem;
     text-align: center;
+    color: var(--main-white);
 
 }
 

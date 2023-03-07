@@ -195,6 +195,7 @@
         document.getElementById('selected-title').innerText = normalizeString(book.title);
         document.getElementById('selected-author').innerText = normalizeString(book.author);
         document.getElementById('selected-status').setAttribute('class', 'status-'.concat(book.status));
+        document.getElementById('selected-status').innerText = normalizeString(book.status);
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type);
         document.getElementById('tw').innerText = 'TW: ' + (book.tw);
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
