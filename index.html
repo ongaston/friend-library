@@ -233,7 +233,7 @@
           display: 'none'
         });
         inlineToggle(document.getElementById('main'));
-        alignElements();
+        setTimeout(alignElements, 200);
 
       }
 
@@ -493,7 +493,6 @@
               if (resp.error !== undefined) {
                 throw (resp);
               }
-
               await getBooks();
               await hideLogin();
             };
