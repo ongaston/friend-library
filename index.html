@@ -31,7 +31,9 @@
         $('#selected-book-container').css('display', 'inline-flex');
       }
 
-      //$(window).on('load', testingView);
+      if (location.host !== 'ongaston.github.io') {
+        $(window).on('load', testingView);
+      }
 
     </script>
 
