@@ -204,12 +204,23 @@ main {
     justify-content: center;
     margin-left: 3rem;
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 #genre-container {
     display: inline-flex;
     flex-wrap: wrap;
-    min-height: 6rem;
+    width: 17rem;
+    justify-content: space-evenly;
+}
+
+.selected-genre {
+    color: var(--main-white);
+    border: 2px solid var(--main-white);
+    border-radius: 50px;
+    height: min-content;
+    padding: 0.3rem 0.5rem;
+    margin: 0.3rem 0;
 }
 
 /* #endregion */

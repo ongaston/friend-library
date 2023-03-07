@@ -76,7 +76,14 @@
             <div id='selected-genres-container'>
 
               <h2 class='selected-section-title'>Genres:</h2>
-              <div id='genre-container'></div>
+              <div id='genre-container'>
+
+                <!--<p class='selected-genre'>Historical</p>
+                <p class='selected-genre'>Sci-Fi</p>
+                <p class='selected-genre'>Dystopian</p>
+                <p class='selected-genre'>Another Genre</p>-->
+
+              </div>
 
             </div>
   
@@ -192,9 +199,17 @@
         document.getElementById('tw').innerText = 'TW: ' + (book.tw);
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
         document.getElementById('comments').innerText = book.comments;
+
+        for (let i = 0; i < book.genres.length; i++) {
+
+          let genreElement = document.createElement('p');
+          genreElement.setAttribute('class', 'selected-genre');
+          genreElement.innerText = normalizeString(book.genres[i]);
+
+        }
         
         showSelected();
-        setTimeout(alignElements, 400);
+        setTimeout(alignElements, 200);
       }
 
       //$('#test-book').on('click', fillSelected);
