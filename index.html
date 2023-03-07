@@ -14,7 +14,7 @@
     <link rel='stylesheet' type='text/css' href='resources/css/style.css'>
     <script src="https://kit.fontawesome.com/a230460b96.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    
 </head>
 
 <body>
@@ -27,26 +27,8 @@
 
       <h1 id='page-title'>Friend Library</h1>
 
-      <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>
+      <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>
 
-      <div id="g_id_onload"
-        data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-callback="callbackFunction"
-        data-nonce=""
-        data-auto_prompt="false">
-      </div>
- 
-      <div class="g_id_signin" class='button'
-            data-type="standard"
-            data-shape="rectangular"
-            data-theme="outline"
-            data-text="signin_with"
-            data-size="large"
-            data-logo_alignment="left">
-      </div>
-    </button>
     </div>
 
     <main id='main'>
@@ -125,26 +107,6 @@
         </div>
 
     </main>
-
-    <script type='text/javascript'>
-
-      $(window).on('load', function() {
-
-        $('#g_id_signin').css({
-          backgroundColor: 'hsla(30, 40%, 84%, 1)',
-          color: 'hsla(164, 23%, 15%, 1)',
-          border: '3px solid hsla(164, 23%, 15%, 1)',
-          borderRadius: '60px',
-          boxShadow: '0 3px 12px -1px rgba(0, 0, 0, 30%)',
-          fontWeight: 'bold',
-          fontFamily: 'Georgia, "Times New Roman", Times, serif',
-          fontSize: '24px',
-          padding: '0.5rem 1rem'
-        });
-
-      })
-
-    </script>
     
     <!--create book elements-->
     <script type='text/javascript'>
@@ -487,23 +449,15 @@
           /**
            * Callback after api.js is loaded.
            */
-          /*function gapiLoaded() {
+          function gapiLoaded() {
             gapi.load('client', intializeGapiClient);
-          }*/
-
-          async function callbackFunction(resp) {
-            if (resp.error !== undefined) {
-                throw (resp);
-              }
-              await getBooks();
-              await hideLogin();
           }
     
           /**
            * Callback after the Google API client is loaded. Loads the
            * discovery doc to initialize the API.
            */
-          /*async function intializeGapiClient() {
+          async function intializeGapiClient() {
             await gapi.client.init({
               apiKey: GOOGLE_API_KEY,
               discoveryDocs: [DISCOVERY_DOC],
@@ -519,28 +473,32 @@
             tokenClient = google.accounts.oauth2.initTokenClient({
               client_id: GOOGLE_CLIENT_ID,
               scope: SCOPES,
-              auto_select: 'true',
-              callback: callbackFunction, // defined later
+              callback: '', // defined later
             });
             gisInited = true;
+            maybeEnableButtons();
           }
     
           /**
            * Enables user interaction after all libraries are loaded.
            */
-          /*function maybeEnableButtons() {
+          function maybeEnableButtons() {
             if (gapiInited && gisInited) {
               //document.getElementById('authorize_btn').style.visibility = 'visible';
             }
           }
-          
-
-
+    
           /**
            *  Sign in the user upon button click.
            */
-          /*function authorizeGoogleAccess() {
-
+          function authorizeGoogleAccess() {
+            tokenClient.callback = async (resp) => {
+              if (resp.error !== undefined) {
+                throw (resp);
+              }
+              await getBooks();
+              await hideLogin();
+            };
     
             if (gapi.client.getToken() === null) {
               // Prompt the user to select a Google Account and ask for consent to share their data
@@ -555,7 +513,7 @@
           /**
            *  Sign out the user upon button click.
            */
-          /*function signoutGoogle() {
+          function signoutGoogle() {
             const token = gapi.client.getToken();
             if (token !== null) {
               google.accounts.oauth2.revoke(token.access_token);
@@ -573,7 +531,6 @@
           async function getBooks() {
 
             try {
-              console.log('test')
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
                 range: "'Taylor\'s Bookshelf'!A:K",
@@ -687,8 +644,8 @@
         
     </script>
 
-    <!--<script async defer src='https://apis.google.com/js/api.js' onload='gapiLoaded()'></script>-->
-    <script async defer src='https://accounts.google.com/gsi/client'></script>
+    <script async defer src='https://apis.google.com/js/api.js' onload='gapiLoaded()'></script>
+    <script async defer src='https://accounts.google.com/gsi/client'onload='gisLoaded()'></script>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
