@@ -148,11 +148,6 @@
 
       function normalizeString(normalize, trim) {
 
-        if (normalize == 'n') {
-          console.log('test');
-          return '';
-        }
-
         let temp = normalize.split(' ');
         for (let i = 0; i < temp.length; i++) {
           temp[i] = temp[i][0].toUpperCase() + (temp[i].substring(1));
@@ -203,12 +198,19 @@
         document.getElementById('selected-cover').setAttribute('src', book.cover);
         document.getElementById('selected-title').innerText = normalizeString(book.title, false);
         document.getElementById('selected-author').innerText = normalizeString(book.author, false);
-        document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
-        document.getElementById('selected-status').innerText = normalizeString(book.status, false);
+        if (book.status !== 'n') {
+          document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
+          document.getElementById('selected-status').innerText = normalizeString(book.status, false);
+        }
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type, false);
-        document.getElementById('tw').innerText = 'TW: ' + (book.tw);
+        if (book.tw !== 'n') {
+          document.getElementById('tw').innerText = 'TW: ' + (book.tw);
+        }
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
-        document.getElementById('comments').innerText = book.comments;
+        if (book.comments !== 'n') {
+          document.getElementById('comments').innerText = book.comments;
+
+        }
 
         for (let i = 0; i < book.genres.length; i++) {
 
