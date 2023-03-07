@@ -211,7 +211,8 @@ main {
     justify-content: center;
 }
 
-#authorize-button {
+#authorize-button,
+#g_id_signin {
     position: absolute;
     top: 30rem;
 }
