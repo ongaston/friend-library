@@ -59,7 +59,8 @@ body {
 .status-borrowed {
 
     border-radius: 30px;
-    width: 5rem;
+    width: fit-content;
+    padding: 0.2rem 1rem;
     text-align: center;
     color: var(--main-white);
 
@@ -152,6 +153,7 @@ main {
     text-shadow: var(--black-text-shadow);
     text-decoration: underline;
     text-underline-offset: 1rem;
+    line-height: 4rem;
     margin-left: 3rem;
     overflow-wrap: break-word;
 }
@@ -159,7 +161,7 @@ main {
 #selected-title-container {
     display: inline-flex;
     align-items: center;
-    justify-content: c;
+    justify-content: center;
 }
 
 #selected-author {
@@ -233,6 +235,11 @@ main {
     height: min-content;
     padding: 0.3rem 0.5rem;
     margin: 0.3rem 0;
+}
+
+.selected-genre:hover {
+    color: var(--light-white);
+    cursor: pointer;
 }
 
 /* #endregion */
