@@ -212,6 +212,7 @@
 
           let genreElement = document.createElement('p');
           genreElement.setAttribute('class', 'selected-genre');
+          console.log(book.genres[i])
           genreElement.innerText = normalizeString(book.genres[i], false);
 
         }
