@@ -233,7 +233,7 @@
           display: 'none'
         });
         inlineToggle(document.getElementById('main'));
-        setTimeout(alignElements, 200);
+        alignElements();
 
       }
 
@@ -493,8 +493,9 @@
               if (resp.error !== undefined) {
                 throw (resp);
               }
-              hideLogin();
+
               await getBooks();
+              await hideLogin();
             };
     
             if (gapi.client.getToken() === null) {
