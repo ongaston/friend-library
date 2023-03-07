@@ -388,27 +388,6 @@
               this.alphabeticalTitle = theToEnd(this.title);
               this.owner = owner;
           }
-          /*normalizeTitle() {
-            let temp = this.title.split;
-            for (let i = 0; i < temp.length; i++) {
-              temp[i] = temp[i][0].toUpperCase().concat(temp[i].substring[1]);
-            }
-            temp = temp.join();
-            return temp.trim();
-
-          }
-          /*getAlphabetical() {
-            return this.alphabeticalTitle;
-          }
-          setAlphabetical() {
-            if (this.title.substring(0,3) == 'the ') {
-
-              this.alphabeticalTitle = this.title.slice(4).concat(', the');
-
-            } else {
-              this.alphabeticalTitle = this.title;
-            }
-          }*/
       }
 
       let testBook = new Book('title', 'author', 'type', testGenres, 'stat', 'comments');
@@ -426,18 +405,6 @@
           setBooks(value) {
               this.books.push(value);
           }
-          /*getAlphabetical() {
-            return this.alphabeticalTitle;
-          }
-          setAlphabetical() {
-            if (this.title.substring(0,3) == 'the ') {
-
-              this.alphabeticalTitle = this.title.slice(4).concat(', the');
-
-            } else {
-              this.alphabeticalTitle = this.title;
-            }
-          }*/
       }
 
       class Person {
@@ -659,7 +626,7 @@
                           seriesArray.push(newSeries);
                       }
 
-
+                      console.log(newBook);
                       bookArray.push(newBook);
                               
                       }
