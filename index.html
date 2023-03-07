@@ -212,6 +212,10 @@
 
         }
 
+        for (let i = 0; i < document.getElementById('genre-container').children.length; i++) {
+          document.getElementById('genre-container').removeChild(document.getElementById('genre-container').children[i])
+        }
+
         for (let i = 0; i < book.genres.length; i++) {
 
           let genreElement = document.createElement('p');
