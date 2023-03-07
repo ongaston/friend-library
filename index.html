@@ -35,12 +35,11 @@
         document.getElementById('selected-status').innerText = 'Borrowed';
         document.getElementById('selected-status').setAttribute('class', 'status-tbr');
 
-        alignElements();
       }
 
       if (location.host !== 'ongaston.github.io') {
         $(window).on('load', testingView);
-
+        console.log('test');
       }
 
     </script>
@@ -167,8 +166,6 @@
 
       function createBookElement(book) {
 
-        console.log(book.genres);
-
         let bookContainer = document.createElement('div');
         bookContainer.setAttribute('class', 'book-container');
         bookContainer.setAttribute('data-title', book.title);
@@ -201,18 +198,17 @@
         document.getElementById('selected-cover').setAttribute('src', book.cover);
         document.getElementById('selected-title').innerText = normalizeString(book.title, false);
         document.getElementById('selected-author').innerText = normalizeString(book.author, false);
-        document.getElementById('selected-status').setAttribute('class', 'status-'.concat(book.status));
+        document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
         document.getElementById('selected-status').innerText = normalizeString(book.status, false);
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type, false);
         document.getElementById('tw').innerText = 'TW: ' + (book.tw);
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
-        //document.getElementById('comments').innerText = book.comments;
+        document.getElementById('comments').innerText = book.comments;
 
         for (let i = 0; i < book.genres.length; i++) {
 
           let genreElement = document.createElement('p');
           genreElement.setAttribute('class', 'selected-genre');
-          console.log(book.genres[i])
           genreElement.innerText = normalizeString(book.genres[i], false);
 
         }
@@ -332,7 +328,6 @@
 
       }
 
-      alignElements();
 
     </script>
 
