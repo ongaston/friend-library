@@ -32,11 +32,15 @@
           display: 'inline-flex',
           alignItems: 'center'
         });
+        document.getElementById('selected-status').innerText = 'status';
+        document.getElementById('selected-status').setAttribute('class', 'status-tbr');
+
+        alignElements();
       }
 
       if (location.host !== 'ongaston.github.io') {
         $(window).on('load', testingView);
-        alignElements();
+
       }
 
     </script>
@@ -63,11 +67,11 @@
 
           <div id='selected-book-info-container'>
 
-            <h1 id='selected-title'>Book Title</h1>
+            <div id='selected-title-container'><h1 id='selected-title'>Book Title</h1><span class='status' id='selected-status'></span></div>
   
             <h2 id='selected-author'>Author</h2>
   
-            <div class='status' id='selected-status'></div>
+
   
             <p class='selected-info' id='fiction-non-fiction'>Fiction</p>
             <p class='selected-info' id='tw'>TW: </p>
@@ -297,30 +301,30 @@
     <script type='text/javascript'>
 
       function alignElements() {
-        $('#selected-status').css('left', 0);
-        let value1 = (Math.abs(document.getElementById('selected-title').getBoundingClientRect().right - document.getElementById('selected-status').getBoundingClientRect().left) + 40);
-        $('#selected-status').css('left', (value1.toString().concat('px')));
+       /* $('#selected-status').css('right', 0);
+        let value1 = (Math.abs(document.getElementById('selected-book-ratings').getBoundingClientRect().left - document.getElementById('selected-status').getBoundingClientRect().right));
+        $('#selected-status').css('right', (value1.toString().concat('px')));
 
         $('#selected-status').css('top', 0);
         let value2 = (Math.abs(document.getElementById('selected-title').getBoundingClientRect().bottom - document.getElementById('selected-status').getBoundingClientRect().bottom));
         $("#selected-status").css('top', value2.toString().concat('px'));
 
-        $('#selected-book-ratings').css('left', 0);
-        let value3 = (Math.abs(document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left) + 60);
-        $('#selected-book-ratings').css('left', value3.toString().concat('px'));
+        //$('#selected-book-ratings').css('left', 0);
+        //let value3 = (Math.abs(document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left) + 60);
+        //$('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
         //$('#selected-book-ratings').css('width', 0);
-        let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
-        $('#selected-book-ratings').animate({
-          width: value4
-        });
+        //let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
+       // $('#selected-book-ratings').animate({
+        //  width: value4
+        //});
 
 
         let value5 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().height + document.getElementById('filter-bar-content').getBoundingClientRect().height));
         //$('#filter-bar-container').css('height', value5.toString().concat('px'));
 
         let value6 = (Math.abs(document.getElementById('main').getBoundingClientRect().height - document.getElementById('filter-bar-container').getBoundingClientRect().height) - 10);
-        //$('#book-list').css('height', value6);
+        //$('#book-list').css('height', value6);*/
 
       }
 

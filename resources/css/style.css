@@ -144,6 +144,7 @@ main {
     display: inline-flex;
     flex-direction: column;
     position: relative;
+    width: 40%;
 }
 
 #selected-title {
@@ -151,9 +152,14 @@ main {
     text-shadow: var(--black-text-shadow);
     text-decoration: underline;
     text-underline-offset: 1rem;
-    margin-top: 2rem;
     margin-left: 3rem;
-    width: max-content;
+    overflow-wrap: break-word;
+}
+
+#selected-title-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: c;
 }
 
 #selected-author {
@@ -165,7 +171,9 @@ main {
 }
 
 #selected-status {
-    position: absolute;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 2rem;
 }
 
 .selected-info {
