@@ -308,7 +308,6 @@
         let value3 = (Math.abs(document.getElementById('selected-status').getBoundingClientRect().right - document.getElementById('selected-book-ratings').getBoundingClientRect().left) + 60);
         $('#selected-book-ratings').css('left', value3.toString().concat('px'));
 
-
         //$('#selected-book-ratings').css('width', 0);
         let value4 = (Math.abs(document.getElementById('selected-book-container').getBoundingClientRect().width - document.getElementById('selected-book-ratings').getBoundingClientRect().left + document.getElementById('selected-book-container').getBoundingClientRect().left) - 32);
         $('#selected-book-ratings').animate({

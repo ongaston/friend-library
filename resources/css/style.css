@@ -53,7 +53,10 @@ body {
     flex-direction: column;
 }
 
-.status {
+.status,
+.status-reading,
+.status-tbr,
+.status-borrowed {
 
     border-radius: 30px;
     width: 5rem;
