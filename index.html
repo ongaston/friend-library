@@ -640,6 +640,13 @@
             bookArray.sort(filterAlphabetical);
 
             for (let i = 0; i < bookArray.length; i++) {
+
+              for (const [key, value] of Object.entries(bookArray[i])) {
+                if (!value) {
+                  value = 'n';
+                }
+              }
+
               if (noCopyArray.every((e => {return e.title !== bookArray[i].title}))) {
                 noCopyArray.push(bookArray[i]);
               }
