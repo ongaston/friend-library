@@ -147,7 +147,7 @@
     <!--create book elements-->
     <script type='text/javascript'>
 
-      function normalizeString(normalize) {
+      function normalizeString(normalize, trim) {
         console.log(normalize)
             let temp = normalize.split(' ');
             for (let i = 0; i < temp.length; i++) {
@@ -155,7 +155,7 @@
             }
             temp = temp.join(' ');
 
-            if (temp.length > 20) {
+            if (temp.length > 20 & trim) {
 
               let check = temp.trim().substring(0, 19);
               return check.trim().concat('...');
@@ -177,11 +177,11 @@
 
         let bookTitle = document.createElement('p');
         bookTitle.setAttribute('class', 'book-title');
-        bookTitle.innerText = normalizeString(book.title);
+        bookTitle.innerText = normalizeString(book.title, true);
         
         let bookAuthor = document.createElement('p');
         bookAuthor.setAttribute('class', 'book-author');
-        bookAuthor.innerText = normalizeString(book.author);
+        bookAuthor.innerText = normalizeString(book.author, true);
 
         document.getElementById('book-list').appendChild(bookContainer);
         bookContainer.appendChild(bookCover);
@@ -197,11 +197,11 @@
         let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
 
         document.getElementById('selected-cover').setAttribute('src', book.cover);
-        document.getElementById('selected-title').innerText = normalizeString(book.title);
-        document.getElementById('selected-author').innerText = normalizeString(book.author);
+        document.getElementById('selected-title').innerText = normalizeString(book.title, false);
+        document.getElementById('selected-author').innerText = normalizeString(book.author, false);
         document.getElementById('selected-status').setAttribute('class', 'status-'.concat(book.status));
-        document.getElementById('selected-status').innerText = normalizeString(book.status);
-        document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type);
+        document.getElementById('selected-status').innerText = normalizeString(book.status, false);
+        document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type, false);
         document.getElementById('tw').innerText = 'TW: ' + (book.tw);
         document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
         document.getElementById('comments').innerText = book.comments;
@@ -210,7 +210,7 @@
 
           let genreElement = document.createElement('p');
           genreElement.setAttribute('class', 'selected-genre');
-          genreElement.innerText = normalizeString(book.genres[i]);
+          genreElement.innerText = normalizeString(book.genres[i], false);
 
         }
         
