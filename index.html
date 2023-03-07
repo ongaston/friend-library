@@ -29,6 +29,25 @@
 
       <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>
 
+      <div id="g_id_onload"
+     data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="callbackFunction"
+     data-nonce=""
+     data-auto_select="true"
+     data-itp_support="true">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+
     </div>
 
     <main id='main'>
@@ -452,6 +471,14 @@
           function gapiLoaded() {
             gapi.load('client', intializeGapiClient);
           }
+
+          async function callbackFunction(resp) {
+            if (resp.error !== undefined) {
+                throw (resp);
+              }
+              await getBooks();
+              await hideLogin();
+          }
     
           /**
            * Callback after the Google API client is loaded. Loads the
@@ -474,7 +501,7 @@
               client_id: GOOGLE_CLIENT_ID,
               scope: SCOPES,
               auto_select: 'true',
-              callback: '', // defined later
+              callback: callbackFunction, // defined later
             });
             gisInited = true;
             maybeEnableButtons();
@@ -488,18 +515,14 @@
               //document.getElementById('authorize_btn').style.visibility = 'visible';
             }
           }
-    
+          
+
+
           /**
            *  Sign in the user upon button click.
            */
           function authorizeGoogleAccess() {
-            tokenClient.callback = async (resp) => {
-              if (resp.error !== undefined) {
-                throw (resp);
-              }
-              await getBooks();
-              await hideLogin();
-            };
+
     
             if (gapi.client.getToken() === null) {
               // Prompt the user to select a Google Account and ask for consent to share their data
