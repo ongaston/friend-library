@@ -197,7 +197,7 @@
       function fillSelected() {
 
         let book = noCopyArray.find(e => {return (e.title == this.dataset.title)});
-
+        console.log(book)
         document.getElementById('selected-cover').setAttribute('src', book.cover);
         document.getElementById('selected-title').innerText = normalizeString(book.title, false);
         document.getElementById('selected-author').innerText = normalizeString(book.author, false);
