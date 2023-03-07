@@ -52,6 +52,8 @@
 
     </div>
 
+    <span id='load-book'><i class='fa-solid fa-book-open fa-beat-fade fa-4x'></i></span>
+
     <main id='main'>
 
         <pre id='content'></pre>
@@ -296,9 +298,19 @@
         $('#login-page').fadeOut().animate({
           display: 'none'
         });
+
+        setTimeout(e => {
+          $('#load-book').css('display', 'block');
+        }, 400);
+
+      }
+
+      function displayMain() {
         inlineToggle(document.getElementById('main'));
 
-
+        setTimeout(() => {
+          $('#load-book').css('display', 'none')
+        }, 400)
       }
 
       function showSelected() {
@@ -490,8 +502,9 @@
               if (resp.error !== undefined) {
                 throw (resp);
               }
+              hideLogin()
               await getBooks();
-              await hideLogin();
+              await displayMain();
             };
     
             if (gapi.client.getToken() === null) {
