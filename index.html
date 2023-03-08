@@ -686,8 +686,11 @@
                   console.log(newPage);
                   break;
                 default:
-
-                  newPage.push(noCopyArray.slice(((pageArray.length * 24) + 1)), ((pageArray.length * 24) + 25));
+                  let lowerIndex = (pageArray.length * 24) + 1;
+                  let upperIndex = (pageArray.length * 24) + 25;
+                  newPage.push(noCopyArray.slice(lowerIndex, upperIndex))
+                  console.log(lowerIndex);
+                  console.log(upperIndex)
                   console.log((pageArray.length * 24) + 1);
                   console.log((pageArray.length * 24) + 25);
                   console.log(newPage)
