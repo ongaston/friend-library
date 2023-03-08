@@ -249,6 +249,23 @@ main {
     cursor: pointer;
 }
 
+#goodreads-link {
+    color: var(--main-white);
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-shadow: var(--dark-green-text-shadow);
+}
+
+#goodreads-link:hover {
+    cursor: pointer;
+    color: var(--light-white);
+}
+
+#goodreads-link:active {
+    color: var(--dark-white);
+}
+
 /* #endregion */
 
 /* #region login */

@@ -98,8 +98,7 @@
             <h2 id='comments-title' class='selected-section-title'>Comments: </h2>
             <p id='comments'></p>
 
-            <!--<h2 class='selected-section-title'>Goodreads Link</h2>
-            <a id='goodreads-link'></a>-->
+            <h2 class='selected-section-title'><a id='goodreads-link'>Goodreads Link<a id='goodreads-link'></a></h2>
 
           </div>
 
@@ -217,6 +216,14 @@
           document.getElementById('comments').innerText = book.comments;
         } else {
           document.getElementById('comments').innerText = '';
+        }
+
+        if (book.goodreads !== 'n') {
+          document.getElementById('goodreads-link').setAttribute('href', book.goodreads);
+          document.getElementById('goodreads-link').innerText = 'Goodreads Link';
+        } else {
+          document.getElementById('goodreads-link').setAttribute('href', '');
+          document.getElementById('goodreads-link').innerText = '';
         }
 
         $('#genre-container').empty();
@@ -374,7 +381,7 @@
       let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
       class Book {
-          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/no-cover.png', owner, goodreads) {
+          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/no-cover.png', owner, goodreads = 'n') {
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
