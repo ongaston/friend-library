@@ -39,7 +39,6 @@
 
       if (location.host !== 'ongaston.github.io') {
         $(window).on('load', testingView);
-        console.log('test');
       }
 
     </script>
@@ -299,8 +298,12 @@
           display: 'none'
         });
 
+        let bookTop = (window.screen.availHeight / 2 - 16).toString().concat('px');
         setTimeout(e => {
-          $('#load-book').css('display', 'block');
+          $('#load-book').css({
+            display: 'block',
+            top: bookTop
+          });
         }, 400);
 
       }
@@ -309,7 +312,9 @@
         inlineToggle(document.getElementById('main'));
 
         setTimeout(() => {
-          $('#load-book').css('display', 'none')
+          $('#load-book').css({
+            display: 'none'
+          });
         }, 400)
       }
 
@@ -355,6 +360,8 @@
       let haleySheet;
       let kennaSheet;
       let elyseSheet;
+      let courtneySheet;
+      let alainaSheet;
 
       function formatGenres(genres) {
 
@@ -424,8 +431,10 @@
       let haley = new Person("Haley", 'haleySheet');
       let kenna = new Person("Kenna", 'kennaSheet');
       let elyse = new Person("Elyse", 'elyseSheet');
+      let courtney = new Person("Courtney", 'courtneySheet');
+      let alaina = new Person("Alaina", 'alainaSheet');
 
-      let peopleArray = [taylor, erica, emma, liv, brittany, haley, kenna, elyse];
+      let peopleArray = [taylor, erica, emma, liv, brittany, haley, alaina, courtney, kenna, elyse];
       let bookArray = [];
       let seriesArray = [];
       let noCopyArray = [];
@@ -570,6 +579,14 @@
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
                 range: "'Elyse\'s Bookshelf'!A:K",
               });
+              courtneySheet = await gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
+                range: "'Courtney\'s Bookshelf'!A:K",
+              });
+              alainaSheet = await gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
+                range: "'Alaina\'s Bookshelf'!A:K",
+              });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
               return;
@@ -596,6 +613,8 @@
             haleySheet = haleySheet.result.values;
             kennaSheet = kennaSheet.result.values;
             elyseSheet = elyseSheet.result.values;
+            courtneySheet = courtneySheet.result.values;
+            alainaSheet = alainaSheet.result.values;
 
             
             for (let i = 0; i < peopleArray.length; i++) {
