@@ -374,7 +374,7 @@
       let testGenres = 'Historical Fiction;Sci-Fi; Romance';
 
       class Book {
-          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/no-cover.png', owner) {
+          constructor(title, author, type, genres, status = 'N', seriesMember = 'N', comments = 'N', bookNumber = 'N', series = 'N', tw = 'N', cover = './resources/media/no-cover.png', owner, goodreads) {
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
@@ -388,6 +388,7 @@
               this.cover = cover;
               this.alphabeticalTitle = theToEnd(this.title);
               this.owner = owner;
+              this.goodreads = goodreads;
           }
       }
 
@@ -549,43 +550,43 @@
             try {
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Taylor\'s Bookshelf'!A:K",
+                range: "'Taylor\'s Bookshelf'!A:L",
               });
               ericaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Erica\'s Bookshelf'!A:K",
+                range: "'Erica\'s Bookshelf'!A:L",
               });
               emmaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Emma\'s Bookshelf'!A:K",
+                range: "'Emma\'s Bookshelf'!A:L",
               });
               livSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Liv\'s Bookshelf'!A:K",
+                range: "'Liv\'s Bookshelf'!A:L",
               });
               brittanySheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Brittany\'s Bookshelf'!A:K",
+                range: "'Brittany\'s Bookshelf'!A:L",
               });
               haleySheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Haley\'s Bookshelf'!A:K",
+                range: "'Haley\'s Bookshelf'!A:L",
               });
               kennaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Kenna\'s Bookshelf'!A:K",
+                range: "'Kenna\'s Bookshelf'!A:L",
               });
               elyseSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Elyse\'s Bookshelf'!A:K",
+                range: "'Elyse\'s Bookshelf'!A:L",
               });
               courtneySheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Courtney\'s Bookshelf'!A:K",
+                range: "'Courtney\'s Bookshelf'!A:L",
               });
               alainaSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
-                range: "'Alaina\'s Bookshelf'!A:K",
+                range: "'Alaina\'s Bookshelf'!A:L",
               });
             } catch (err) {
               document.getElementById('content').innerText = err.message;
@@ -625,12 +626,12 @@
 
                   if (!peopleArray[i].sheet[j].includes('Y')) {
                       let bookInfo = peopleArray[i].sheet[j];
-                      let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name);
+                      let newBook =  new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name, bookInfo[11]);
                       bookArray.push(newBook);
 
                   } else {
                       let bookInfo = peopleArray[i].sheet[j];
-                      let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name);
+                      let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], bookInfo[3], bookInfo[4], bookInfo[5], bookInfo[6], bookInfo[7], bookInfo[8], bookInfo[9], bookInfo[10], peopleArray[i].name, bookInfo[11]);
                       if (seriesArray.some((e) => {return e.title == newBook.series})) {
                           let found = seriesArray.find((e) => {return e.title == newBook.series});
                           found.setBooks(newBook);
