@@ -674,7 +674,26 @@
               }
             }
 
-            for (let i = 0; i < 21; i++) {
+            let pageArray = [];
+            let numPages = Math.ceil(noCopyArray.length / 24);
+
+            while (pageArray.length < numPages) {
+
+              let newPage = [];
+              switch (pageArray.length) {
+                case 0:
+                  newPage.push(noCopyArray.slice(0, 23));
+                  break;
+                default:
+                  newPage.push(noCopyArray.slice(pageArray.length * 24), (pageArray.length * 24 + 24));
+                  break;
+              }
+              pageArray.push(newPage);
+
+            }
+            console.log(pageArray);
+
+            for (let i = 0; i < 24; i++) {
 
               createBookElement(noCopyArray[i]);
 
