@@ -255,9 +255,39 @@
     <!--Search bar-->
     <script type='text/javascript'>
 
-      /*$('#search-bar').on('keyup', function() {
+      let searchBar = document.getElementById('search-bar');
 
-      })*/
+      $('#search-bar').on('keyup', function() {
+
+        if (searchBar.value.length < 4) {
+          return;
+        } else {
+
+          clearBooks();
+
+          for (let i = 0; i < noCopyArray.length; i++) {
+
+            if ((searchBar.value.toLowerCase() !== noCopyArray[i].title) && (searchBar.value.toLowerCase() !== noCopyArray[i].author)) {
+
+              continue;
+
+            } else {
+
+              console.log('test');
+              createBookElement(noCopyArray[i]);
+
+            }
+
+          }
+
+          if (document.getElementById('book-list').children.length !== 0) {
+            hideSelected();
+          }
+
+        }
+        
+
+      })
 
     </script>
 
@@ -340,6 +370,12 @@
 
         }
 
+      }
+
+      function hideSelected() {
+        if ($('#selected-book-container').css('display') == 'inline-flex') {
+          inlineToggle(document.getElementById('selected-book-container'));
+        }
       }
 
     </script>
