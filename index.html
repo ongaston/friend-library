@@ -744,6 +744,9 @@
               currentPage -= 1;
 
               addPageElements();
+              $('#book-list').animate({
+                    scrollTop: 0
+              })
 
             }
 
@@ -768,10 +771,7 @@
 
                   clearBooks();
                   let pageIndex = pageArray[Number(pageButton.innerText) - 1];
-                  console.log(pageIndex);
-                  console.log(currentPage)
                   for (let j = 0; j < pageIndex.length; j++) {
-                    console.log(pageIndex[j])
 
                     createBookElement(pageIndex[j]);
 
@@ -791,6 +791,10 @@
                   } else {
                     nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
                   }
+
+                  $('#book-list').animate({
+                    scrollTop: 0
+                  })
 
                 }
 
@@ -823,6 +827,10 @@
 
               addPageElements();
 
+              $('#book-list').animate({
+                    scrollTop: 0
+              })
+
               if (currentPage == pageArray.length) {
                   nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
                 } else {
@@ -832,6 +840,14 @@
             }
 
           })
+
+          for (let j = 0; j < pageButtonContainer.children.length; j++) {
+            if (pageButtonContainer.children[j].innerText == currentPage) {
+              pageButtonContainer.children[j].style.fontWeight = 'bold';
+            } else {
+              pageButtonContainer.children[j].style.fontWeight = 'normal';
+            }
+          }
 
           }
 
