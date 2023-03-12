@@ -712,11 +712,46 @@
 
           function addPageElements() {
 
-            for (let i = 0; i < pageArray.length; i++) {
+          let pageButtonContainer = document.createElement('nav');
+          pageButtonContainer.setAttribute('id', 'page-button-container');
+          $('#book-list').append(pageButtonContainer);
 
-              
+          let previousPage = document.createElement('span');
+          previousPage.setAttribute('id', 'previous-page');
+          previousPage.setAttribute('class', 'page-button');
+          let previousSymbol = document.createElement('i');
+          previousSymbol.setAttribute('class', 'fa-solid fa-chevron-left fa-2x');
+          $(previousPage).append(previousSymbol);
+          $(pageButtonContainer).append(previousPage);
 
-            }
+          for (let i = 0; i < pageArray.length; i++) {
+
+              let pageButton = document.createElement('div');
+              pageButton.setAttribute('class', 'page-button');
+              pageButton.innerHTML = (i + 1).toString();
+              $(pageButtonContainer).append(pageButton);
+
+              $(pageButton).on('click', function() {
+
+                clearBooks();
+                let pageIndex = pageArray[Number(pageButton.innerText) - 1];
+                for (let j = 0; j < pageArray[pageIndex].length; j++) {
+
+                  createBookElement(pageArray[pageIndex][j]);
+
+                }
+
+              })
+
+          }
+
+          let nextPage = document.createElement('span');
+          nextPage.setAttribute('id', 'next-page');
+          nextPage.setAttribute('class', 'page-button');
+          let nextSymbol = document.createElement('i');
+          nextSymbol.setAttribute('class', 'fa-solid fa-chevron-right fa-2x');
+          $(nextPage).append(nextSymbol);
+          $(pageButtonContainer).append(nextPage);
 
           }
 

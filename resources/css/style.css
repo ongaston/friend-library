@@ -420,6 +420,21 @@ span {
 
 /* #endregion */
 
+    #page-button-container {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: 30px solid var(--dark-green);
+        border-radius: 10px;
+        box-shadow: var(--black-box-shadow);
+    }
 
+    .page-button {
+        background-color: var(--main-green);
+        color: var(--main-white);
+        font-size: 20px;
+        padding: 0 0.25rem;
+        border: 2px solid var(--dark-green);
+    }
 
 /* #endregion */
