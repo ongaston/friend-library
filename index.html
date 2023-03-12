@@ -764,6 +764,8 @@
 
                 clearBooks();
                 let pageIndex = pageArray[Number(pageButton.innerText) - 1];
+                console.log(pageIndex);
+                console.log(currentPage)
                 for (let j = 0; j < pageIndex.length; j++) {
 
                   createBookElement(pageIndex[j]);
