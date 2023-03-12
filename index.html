@@ -743,7 +743,7 @@
 
               currentPage -= 1;
 
-              $('#book-list').detach(pageButtonContainer);
+              document.getElementById('book-list').removeChild(pageButtonContainer);
               $('#book-list').append(pageButtonContainer);
 
             }
@@ -791,7 +791,7 @@
                     nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
                   }
 
-                  $('#book-list').detach(pageButtonContainer);
+                  document.getElementById('book-list').removeChild(pageButtonContainer);
                   $('#book-list').append(pageButtonContainer);
 
                 }
@@ -823,7 +823,7 @@
 
               currentPage += 1;
 
-              $('#book-list').detach(pageButtonContainer);
+              document.getElementById('book-list').removeChild(pageButtonContainer);
               $('#book-list').append(pageButtonContainer);
 
               if (currentPage == pageArray.length) {
