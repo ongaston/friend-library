@@ -743,7 +743,8 @@
 
               currentPage -= 1;
 
-              $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
+              $('#book-list').detach(pageButtonContainer);
+              $('#book-list').append(pageButtonContainer);
 
             }
 
@@ -790,7 +791,8 @@
                     nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
                   }
 
-                  $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
+                  $('#book-list').detach(pageButtonContainer);
+                  $('#book-list').append(pageButtonContainer);
 
                 }
 
@@ -821,7 +823,8 @@
 
               currentPage += 1;
 
-              $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
+              $('#book-list').detach(pageButtonContainer);
+              $('#book-list').append(pageButtonContainer);
 
               if (currentPage == pageArray.length) {
                   nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
