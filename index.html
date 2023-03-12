@@ -267,7 +267,7 @@
 
           for (let i = 0; i < noCopyArray.length; i++) {
 
-            if ((searchBar.value.toLowerCase() !== noCopyArray[i].title) && (searchBar.value.toLowerCase() !== noCopyArray[i].author)) {
+            if (!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase()))) {
 
               continue;
 
