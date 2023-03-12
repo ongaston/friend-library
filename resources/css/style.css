@@ -452,4 +452,8 @@ span {
         border-color: var(--main-white);
     }
 
+    #previous-page {
+        color: hsla(30, 10%, 40%, 1);
+    }
+
 /* #endregion */
