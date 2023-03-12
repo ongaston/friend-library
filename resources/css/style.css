@@ -435,6 +435,18 @@ span {
         font-size: 20px;
         padding: 0 0.25rem;
         border: 2px solid var(--dark-green);
+        font-weight: normal;
+    }
+
+    .page-button:hover {
+        background-color: var(--light-green);
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .page-button:active {
+        background-color: var(--dark-green);
+        border-color: var(--main-white);
     }
 
 /* #endregion */
