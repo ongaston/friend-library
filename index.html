@@ -148,8 +148,6 @@
 
       function normalizeString(normalize, trim) {
 
-        console.log(normalize);
-
         let temp = normalize.split(' ');
         for (let i = 0; i < temp.length; i++) {
           temp[i] = temp[i][0].toUpperCase() + (temp[i].substring(1));
@@ -168,12 +166,9 @@
 
       function clearBooks() {
         $('#book-list').empty();
-        addPageElements();
       }
 
       function createBookElement(book) {
-
-        console.log(book);
 
         let bookContainer = document.createElement('div');
         bookContainer.setAttribute('class', 'book-container');
@@ -748,6 +743,8 @@
 
               currentPage -= 1;
 
+              $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
+
             }
 
             if (currentPage == 1) {
@@ -791,6 +788,8 @@
                   nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
                 }
 
+                $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
+
               })
 
           }
@@ -817,6 +816,8 @@
               }
 
               currentPage += 1;
+
+              $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
 
               if (currentPage == pageArray.length) {
                   nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
