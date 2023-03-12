@@ -764,31 +764,35 @@
 
               $(pageButton).on('click', function() {
 
-                clearBooks();
-                let pageIndex = pageArray[Number(pageButton.innerText) - 1];
-                console.log(pageIndex);
-                console.log(currentPage)
-                for (let j = 0; j < pageIndex.length; j++) {
-                  console.log(pageIndex[j])
+                if (pageButton.innerText !== currentPage.toString()) {
 
-                  createBookElement(pageIndex[j]);
+                  clearBooks();
+                  let pageIndex = pageArray[Number(pageButton.innerText) - 1];
+                  console.log(pageIndex);
+                  console.log(currentPage)
+                  for (let j = 0; j < pageIndex.length; j++) {
+                    console.log(pageIndex[j])
+
+                    createBookElement(pageIndex[j]);
+
+                  }
+                  currentPage = Number(pageButton.innerText);
+
+                  if (currentPage == 1) {
+                    previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                  } else {
+                    previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                  }
+
+                  if (currentPage == pageArray.length) {
+                    nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                  } else {
+                    nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                  }
+
+                  $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
 
                 }
-                currentPage = Number(pageButton.innerText);
-
-                if (currentPage == 1) {
-                  previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
-                } else {
-                  previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
-                }
-
-                if (currentPage == pageArray.length) {
-                  nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
-                } else {
-                  nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
-                }
-
-                $('#book-list').detach(pageButtonContainer).append(pageButtonContainer);
 
               })
 
