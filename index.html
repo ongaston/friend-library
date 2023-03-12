@@ -745,6 +745,12 @@
 
             }
 
+            if (currentPage == 1) {
+              previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
+            }
+
           })
 
           for (let i = 0; i < pageArray.length; i++) {
@@ -764,6 +770,18 @@
 
                 }
                 currentPage = Number(pageButton.innerText);
+
+                if (currentPage == 1) {
+                  previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                } else {
+                  previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                }
+
+                if (currentPage == pageArray.length) {
+                  nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                } else {
+                  nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                }
 
               })
 
@@ -791,6 +809,12 @@
               }
 
               currentPage += 1;
+
+              if (currentPage == pageArray.length) {
+                  nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                } else {
+                  nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                }
 
             }
 
