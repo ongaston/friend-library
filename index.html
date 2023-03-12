@@ -710,7 +710,7 @@
 
           }
 
-          let currentPage;
+          let currentPage = 1;
 
           function addPageElements() {
 
@@ -725,6 +725,25 @@
           previousSymbol.setAttribute('class', 'fa-solid fa-chevron-left');
           $(previousPage).append(previousSymbol);
           $(pageButtonContainer).append(previousPage);
+
+          $(previousPage).on('click', function() {
+
+            if (currentPage !== 1) {
+
+              let targetPageArray = pageArray[currentPage - 2];
+              clearBooks();
+
+              for (let i = 0; i < pageArray[targetPageArray].length; i++) {
+
+                createBookElement(pageArray[targetPageArray][i]);
+
+              }
+
+              currentPage -= 1;
+
+            }
+
+          })
 
           for (let i = 0; i < pageArray.length; i++) {
 
@@ -742,7 +761,7 @@
                   createBookElement(pageArray[pageIndex][j]);
 
                 }
-                currentPage = pageButton.innerText;
+                currentPage = Number(pageButton.innerText);
 
               })
 
@@ -755,6 +774,25 @@
           nextSymbol.setAttribute('class', 'fa-solid fa-chevron-right');
           $(nextPage).append(nextSymbol);
           $(pageButtonContainer).append(nextPage);
+
+          $(nextPage).on('click', function() {
+
+            if (currentPage !== pageArray.length) {
+
+              let targetPageArray = pageArray[currentPage];
+              clearBooks();
+
+              for (let i = 0; i < pageArray[targetPageArray].length; i++) {
+
+                createBookElement(pageArray[targetPageArray][i]);
+
+              }
+
+              currentPage += 1;
+
+            }
+
+          })
 
           }
 
