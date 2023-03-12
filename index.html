@@ -735,9 +735,9 @@
               let targetPageArray = pageArray[currentPage - 2];
               clearBooks();
 
-              for (let i = 0; i < pageArray[targetPageArray].length; i++) {
+              for (let i = 0; i < targetPageArray.length; i++) {
 
-                createBookElement(pageArray[targetPageArray][i]);
+                createBookElement(targetPageArray[i]);
 
               }
 
@@ -764,9 +764,9 @@
 
                 clearBooks();
                 let pageIndex = pageArray[Number(pageButton.innerText) - 1];
-                for (let j = 0; j < pageArray[pageIndex].length; j++) {
+                for (let j = 0; j < pageIndex.length; j++) {
 
-                  createBookElement(pageArray[pageIndex][j]);
+                  createBookElement(pageIndex[j]);
 
                 }
                 currentPage = Number(pageButton.innerText);
@@ -802,9 +802,9 @@
               let targetPageArray = pageArray[currentPage];
               clearBooks();
 
-              for (let i = 0; i < pageArray[targetPageArray].length; i++) {
+              for (let i = 0; i < targetPageArray.length; i++) {
 
-                createBookElement(pageArray[targetPageArray][i]);
+                createBookElement(targetPageArray[i]);
 
               }
 
