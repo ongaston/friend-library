@@ -261,7 +261,7 @@
 
       $('#search-bar').on('input', function() {
 
-        if (searchBar.value.length == 0 && searching) {
+        if (searchBar.value.length == 0) {
           searching = false;
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
