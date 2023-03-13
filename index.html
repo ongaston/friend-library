@@ -270,10 +270,11 @@
       $('#search-bar').on('keyup', function() {
 
         if (searchBar.value.length == 0) {
-
+          console.log('test');
           searching = false;
           clearBooks();
           bookList.innerHTML = priorPage;
+          priorPage = '';
 
 
         } else if (searchBar.value.length < 4 && searchBar.value.length > 0) {
