@@ -258,23 +258,33 @@
       let searchBar = document.getElementById('search-bar');
       let searching = false;
       let bookList = document.getElementById('book-list');
-      let priorPage;
-
-      function savePage() {
-
-        let page = bookList.innerHTML;
-        return page;
-
-      }
 
       $('#search-bar').on('input', function() {
 
         if (searchBar.value.length == 0 && searching) {
           searching = false;
           clearBooks();
-          bookList.innerHTML = priorPage;
-          priorPage = '';
+          let pageIndex = pageArray[Number(currentPage) - 1];
+                  for (let j = 0; j < pageIndex.length; j++) {
 
+                    createBookElement(pageIndex[j]);
+
+                  }
+                  currentPage = Number(pageButton.innerText);
+
+                  addPageElements();
+
+                  if (currentPage == 1) {
+                    previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                  } else {
+                    previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                  }
+
+                  if (currentPage == pageArray.length) {
+                    nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
+                  } else {
+                    nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
+                  }
 
         } else if ((searchBar.value.length < 4 && searchBar.value.length > 0)) {
           searching = false;
@@ -282,7 +292,6 @@
         } else {
 
           if (!searching) {
-            priorPage = savePage();
             clearBooks();
           } else {
             searching = true;
@@ -789,6 +798,10 @@
           }
 
           let currentPage = 1;
+
+          function getCurrentPage() {
+            return currentPage;
+          }
 
           function addPageElements() {
 
