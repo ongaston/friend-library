@@ -269,8 +269,8 @@
 
       $('#search-bar').on('input', function() {
 
-        if (searchBar.value.length == 0) {
-          console.log('test');
+        if (searchBar.value.length == 0 && searching) {
+          console.log(priorPage);
           searching = false;
           clearBooks();
           bookList.innerHTML = priorPage;
