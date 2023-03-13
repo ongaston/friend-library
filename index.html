@@ -491,22 +491,33 @@
 
           $(bookList).remove('h1');
 
-          /*for (let i = 0; i < bookList.children.length; i++) {
+          for (let i = 0; i < bookList.children.length; i++) {
 
-            if (!(bookList.children[i].dataset.title.includes(searchBar.value.toLowerCase())) && !(bookList.children[i].children[2].innerText.includes(searchBar.value.toLowerCase()))) {
+            let book = noCopyArray.find(e => {return (e.title == bookList.children[i].dataset.title)});
+
+            if (!(filteredGenres.every(e => {return book.genres.includes(e)}))) {
               $(bookList).remove(bookList.children[i]);
             }
 
-          }*/
+          }
 
           for (let i = 0; i < noCopyArray.length; i++) {
 
             if (filteredGenres.every(e => {return noCopyArray[i].genres.includes(e)})) {
 
-              console.log('test')
+              createBookElement(noCopyArray[i]);
 
             }
 
+          }
+
+          if (document.getElementById('book-list').children.length !== 0) {
+            hideSelected();
+          } else {
+            let noResults = document.createElement('h1');
+            noResults.setAttribute('id', 'no-results');
+            noResults.innerText = 'No results for current search';
+            $(bookList).append(noResults);
           }
 
         }
