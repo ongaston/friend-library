@@ -315,7 +315,7 @@
 
             let book = noCopyArray.find(e => {return (e.title == bookList.children[i].dataset.title)});
 
-            if (!(filteredGenres.every(e => {return book.genres.includes(e)}))) {
+            if ((filteredGenres.every(e => {return book.genres.includes(e)}))) {
               $(bookList).remove(bookList.children[i]);
             }
 
