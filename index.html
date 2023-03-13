@@ -314,7 +314,7 @@
 
           if (document.getElementById('book-list').children.length !== 0) {
             hideSelected();
-
+          } else {
             let noResults = document.createElement('h1');
             noResults.setAttribute('id', 'no-results');
             noResults.innerText = 'No results for current search';
