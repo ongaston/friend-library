@@ -267,7 +267,7 @@
 
       }
 
-      $('#search-bar').on('keyup', function() {
+      $('#search-bar').on('input', function() {
 
         if (searchBar.value.length == 0) {
           console.log('test');
@@ -305,7 +305,6 @@
 
             } else {
 
-              console.log('test');
               createBookElement(noCopyArray[i]);
 
             }
