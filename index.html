@@ -305,9 +305,17 @@
 
           $(bookList).remove('h1');
 
+          let filteredGenres = getFiltered();
+
           for (let i = 0; i < bookList.children.length; i++) {
 
-            if (!(bookList.children[i].dataset.title.includes(searchBar.value.toLowerCase())) && !(bookList.children[i].children[2].innerText.includes(searchBar.value.toLowerCase()))) {
+            if ((!(bookList.children[i].dataset.title.includes(searchBar.value.toLowerCase())) && !(bookList.children[i].children[2].innerText.includes(searchBar.value.toLowerCase())))) {
+              $(bookList).remove(bookList.children[i]);
+            }
+
+            let book = noCopyArray.find(e => {return (e.title == bookList.children[i].dataset.title)});
+
+            if (!(filteredGenres.every(e => {return book.genres.includes(e)}))) {
               $(bookList).remove(bookList.children[i]);
             }
 
@@ -315,7 +323,7 @@
 
           for (let i = 0; i < noCopyArray.length; i++) {
 
-            if (!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase()))) {
+            if ((!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase()))) && !(filteredGenres.every(e => {return noCopyArray[i].genres.includes(e)}))) {
 
               continue;
 
@@ -436,6 +444,10 @@
     <script type='text/javascript'>
 
       let filteredGenres = [];
+
+      function getFiltered() {
+        return filteredGenres;
+      }
 
       function editFiltered(genre) {
         if (filteredGenres.includes(genre)) {
