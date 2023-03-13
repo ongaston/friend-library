@@ -463,4 +463,10 @@ span {
         color: var(--main-green);
     }
 
+    #active-genre-container {
+        display: inline-flex;
+        align-items: center;
+        max-width: 80%;
+    }
+
 /* #endregion */
