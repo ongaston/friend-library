@@ -265,26 +265,27 @@
           searching = false;
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
-                  for (let j = 0; j < pageIndex.length; j++) {
+          console.log(pageIndex);
+            for (let j = 0; j < pageIndex.length; j++) {
 
-                    createBookElement(pageIndex[j]);
+              createBookElement(pageIndex[j]);
 
-                  }
-                  currentPage = Number(pageButton.innerText);
+            }
+            currentPage = Number(pageButton.innerText);
 
-                  addPageElements();
+            addPageElements();
 
-                  if (currentPage == 1) {
-                    previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
-                  } else {
-                    previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
-                  }
+            if (currentPage == 1) {
+              previousPage.style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              previousPage.style.color = 'hsla(30, 40%, 84%, 1)';
+            }
 
-                  if (currentPage == pageArray.length) {
-                    nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
-                  } else {
-                    nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
-                  }
+            if (currentPage == pageArray.length) {
+              nextPage.style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              nextPage.style.color = 'hsla(30, 40%, 84%, 1)';
+            }
 
         } else if ((searchBar.value.length < 4 && searchBar.value.length > 0)) {
           searching = false;
