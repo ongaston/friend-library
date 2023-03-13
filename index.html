@@ -270,14 +270,13 @@
       $('#search-bar').on('input', function() {
 
         if (searchBar.value.length == 0 && searching) {
-          console.log(priorPage);
           searching = false;
           clearBooks();
           bookList.innerHTML = priorPage;
           priorPage = '';
 
 
-        } else if (searchBar.value.length < 4 && searchBar.value.length > 0) {
+        } else if ((searchBar.value.length < 4 && searchBar.value.length > 0)) {
           searching = false;
           return;
         } else {
@@ -288,6 +287,8 @@
           } else {
             searching = true;
           }
+
+          $(bookList).remove('h1');
 
           for (let i = 0; i < bookList.children.length; i++) {
 
@@ -313,6 +314,11 @@
 
           if (document.getElementById('book-list').children.length !== 0) {
             hideSelected();
+
+            let noResults = document.createElement('h1');
+            noResults.setAttribute('id', 'no-results');
+            noResults.innerText = 'No results for current search';
+            $(bookList).append(noResults);
           }
 
         }

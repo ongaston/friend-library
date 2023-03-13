@@ -457,4 +457,10 @@ span {
         color: hsla(30, 10%, 40%, 1);
     }
 
+    #no-results {
+        font-size: 32px;
+        text-align: center;
+        color: var(--main-green);
+    }
+
 /* #endregion */
