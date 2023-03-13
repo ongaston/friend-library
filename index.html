@@ -154,7 +154,7 @@
         }
         temp = temp.join(' ');
 
-        if (temp.length > 20 & trim) {
+        if (temp.length >= 19 & trim) {
 
           let check = temp.trim().substring(0, 19);
           return check.trim().concat('...');
@@ -265,7 +265,6 @@
           searching = false;
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
-          console.log(pageIndex);
             for (let j = 0; j < pageIndex.length; j++) {
 
               createBookElement(pageIndex[j]);
@@ -429,6 +428,8 @@
     <!--filter functions-->
     <script type='text/javascript'>
 
+      let filteredGenres = [];
+
       function filterAlphabetical(a, b) {
 
         if (a.alphabeticalTitle.charCodeAt(0) < b.alphabeticalTitle.charCodeAt(0)) {
@@ -442,8 +443,61 @@
 
       }
 
-    </script>
+      function filterGenre(filter) {
 
+        if (filteredGenres.length == 0) {
+          clearBooks();
+          let pageIndex = pageArray[Number(currentPage) - 1];
+            for (let j = 0; j < pageIndex.length; j++) {
+
+              createBookElement(pageIndex[j]);
+
+            }
+
+            addPageElements();
+
+            if (currentPage == 1) {
+              document.getElementById('previous-page').style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              document.getElementById('previous-page').style.color = 'hsla(30, 40%, 84%, 1)';
+            }
+
+            if (currentPage == pageArray.length) {
+              document.getElementById('next-page').style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              document.getElementById('next-page').style.color = 'hsla(30, 40%, 84%, 1)';
+            }
+        } 
+
+        if (filteredGenres.length > 0) {
+
+          clearBooks();
+
+          $(bookList).remove('h1');
+
+          /*for (let i = 0; i < bookList.children.length; i++) {
+
+            if (!(bookList.children[i].dataset.title.includes(searchBar.value.toLowerCase())) && !(bookList.children[i].children[2].innerText.includes(searchBar.value.toLowerCase()))) {
+              $(bookList).remove(bookList.children[i]);
+            }
+
+          }*/
+
+          for (let i = 0; i < noCopyArray.length; i++) {
+
+            if (filteredGenres.every(e => {return noCopyArray[i].genres.includes(e)})) {
+
+              console.log('test')
+
+            }
+
+          }
+
+        }
+
+      }
+
+    </script>
 
     <!--classes and objects-->
     <script type='text/javascript'>
