@@ -256,14 +256,29 @@
     <script type='text/javascript'>
 
       let searchBar = document.getElementById('search-bar');
+      let searching = false;
+      let bookList = document.getElementById('book-list');
 
       $('#search-bar').on('keyup', function() {
 
         if (searchBar.value.length < 4) {
+          searching = false;
           return;
         } else {
 
-          clearBooks();
+          if (!searching) {
+            clearBooks();
+          } else {
+            searching = true;
+          }
+
+          for (let i = 0; i < bookList.children.length; i++) {
+
+            if (!(bookList.children[i].dataset.title.includes(searchBar.value.toLowerCase())) && !(bookList.children[i].children[2].innerText.includes(searchBar.value.toLowerCase()))) {
+              $(bookList).remove(bookList.children[i]);
+            }
+
+          }
 
           for (let i = 0; i < noCopyArray.length; i++) {
 
