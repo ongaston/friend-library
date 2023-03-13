@@ -258,15 +258,31 @@
       let searchBar = document.getElementById('search-bar');
       let searching = false;
       let bookList = document.getElementById('book-list');
+      let priorPage;
+
+      function savePage() {
+
+        let page = bookList.innerHTML;
+        return page;
+
+      }
 
       $('#search-bar').on('keyup', function() {
 
-        if (searchBar.value.length < 4) {
+        if (searchBar.value.length == 0) {
+
+          searching = false;
+          clearBooks();
+          bookList.innerHTML = priorPage;
+
+
+        } else if (searchBar.value.length < 4 && searchBar.value.length > 0) {
           searching = false;
           return;
         } else {
 
           if (!searching) {
+            priorPage = savePage();
             clearBooks();
           } else {
             searching = true;
