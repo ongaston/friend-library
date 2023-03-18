@@ -482,9 +482,10 @@
 
       })
 
-      let filterButtons = document.getElementsByClassName('filter-genre');
+      let filterButtons = document.getElementsByClassName('genre-filter');
       for (let i = 0; i < filterButtons.length; i++) {
         $(filterButtons[i]).on('click', function() {
+          console.log('test');
           editFiltered(filterButtons[i].innerText.toLowerCase());
           filterGenre();
         })
