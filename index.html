@@ -113,6 +113,26 @@
               <div id='filter-container'>
 
                 <p id='filter-label'>Filters<span id='plus-sign'><i class='fa-solid fa-plus'></i></span></p>
+                
+                <div id='filter-dropdown-container'>
+
+                  <div id='genre-filter-container'>
+
+                    <p class='genre-filter'>Contemporary</p>
+                    <p class='genre-filter'>Dystopian</p>
+                    <p class='genre-filter'>Historical</p>
+                    <p class='genre-filter'>LGBTQ+</p>
+                    <p class='genre-filter'>Memoir</p>
+                    <p class='genre-filter'>Mythology</p>
+                    <p class='genre-filter'>Realistic</p>
+                    <p class='genre-filter'>Romance</p>
+                    <p class='genre-filter'>Sci-Fi</p>
+                    <p class='genre-filter'>Social Justice</p>
+                    <p class='genre-filter'>Thriller</p>
+
+                  </div>
+
+                </div>
 
               </div>
 
@@ -441,6 +461,35 @@
         }
       }
 
+      let filterDropdown = document.getElementById('filter-dropdown-container');
+      let filterLabel = document.getElementById('filter-label');
+      let firstClick = true;
+
+      $('#filter-label').on('click', function() {
+  
+        if ($(filterDropdown).css('display') == 'none') {
+          $(filterDropdown).css('display', 'inline-flex');
+        } else {
+          $(filterDropdown).css('display', 'none');
+        }
+
+        if (firstClick) {
+          firstClick = false;
+
+          $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 4 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
+          $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
+        }
+
+      })
+
+      let filterButtons = document.getElementsByClassName('filter-genre');
+      for (let i = 0; i < filterButtons.length; i++) {
+        $(filterButtons[i]).on('click', function() {
+          editFiltered(filterButtons[i].innerText.toLowerCase());
+          filterGenre();
+        })
+      }
+      
     </script>
 
     <!--filter functions-->
@@ -881,6 +930,8 @@
               
             }
             console.log(genreArray);
+
+            
 
             let numPages = Math.ceil(noCopyArray.length / 24);
 
