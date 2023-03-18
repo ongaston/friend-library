@@ -864,7 +864,13 @@
                   Object.defineProperty(bookArray[i], key, {value: 'n'});
                 }
                 if (key == 'genres' && value) {
-                  console.log(value)
+                  for (let j = 0; j < value.length; j++) {
+
+                    if (genreArray.every((e => {return e !== value[j]}))) {
+                      genreArray.push(value[j]);
+                    }
+
+                  }
                 }
               }
 
@@ -874,7 +880,7 @@
 
               
             }
-
+            console.log(genreArray);
 
             let numPages = Math.ceil(noCopyArray.length / 24);
 
