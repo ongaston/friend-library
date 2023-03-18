@@ -861,10 +861,10 @@
 
               for (const [key, value] of Object.entries(bookArray[i])) {
                 if (!value) {
-                  Object.defineProperty(bookArray[i], key, {value: 'n'})
+                  Object.defineProperty(bookArray[i], key, {value: 'n'});
                 }
-                if (key == 'genres') {
-                  console.log('test');
+                if (key == 'genres' && value) {
+                  console.log(value)
                 }
               }
 
