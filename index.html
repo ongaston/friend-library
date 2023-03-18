@@ -326,7 +326,7 @@
 
           for (let i = 0; i < noCopyArray.length; i++) {
 
-            if ((!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase()))) && !(filteredGenres.every(e => {return noCopyArray[i].genres.includes(e)}))) {
+            if ((!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase())))) {
               console.log(noCopyArray[i])
               continue;
 
