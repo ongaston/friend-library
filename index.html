@@ -327,11 +327,11 @@
           for (let i = 0; i < noCopyArray.length; i++) {
 
             if ((!(noCopyArray[i].title.includes(searchBar.value.toLowerCase())) && !(noCopyArray[i].author.includes(searchBar.value.toLowerCase())))) {
-              console.log(noCopyArray[i])
+
               continue;
 
             } else {
-              console.log(noCopyArray[i]);
+
               createBookElement(noCopyArray[i]);
 
             }
@@ -640,6 +640,7 @@
       let bookArray = [];
       let seriesArray = [];
       let noCopyArray = [];
+      let genreArray = [];
 
     </script>
 
@@ -862,11 +863,16 @@
                 if (!value) {
                   Object.defineProperty(bookArray[i], key, {value: 'n'})
                 }
+                if (key == 'genres') {
+                  console.log('test');
+                }
               }
 
               if (noCopyArray.every((e => {return e.title !== bookArray[i].title}))) {
                 noCopyArray.push(bookArray[i]);
               }
+
+              
             }
 
 
