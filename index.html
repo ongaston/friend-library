@@ -177,9 +177,9 @@
 
     </main>
 
-    <script type="module" src="/resources/js-cookie/dist/js.cookie.mjs"></script>
+    <script type="module" src="./resources/js-cookie/dist/js.cookie.mjs"></script>
     <script type="module">
-      import Cookies from '/resources/js-cookie/dist/js.cookie.mjs'
+      import Cookies from "./resources/js-cookie/dist/js.cookie.mjs"
     
       Cookies.set('foo', 'bar');
       console.log(Cookies.get())
@@ -784,7 +784,7 @@
            */
           function gapiLoaded() {
             gapi.load('client', intializeGapiClient);
-            console.log(gapi.client);
+
           }
     
           /**
