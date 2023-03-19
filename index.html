@@ -871,6 +871,8 @@
            */
           async function getBooks() {
 
+            hideLogin();
+
             try {
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: '1HIfF-BjV1QrKhRusaQhtMzQbkKyHsAZsFLJHV7iquyM',
