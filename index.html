@@ -547,6 +547,7 @@
       function filterGenre() {
 
         filteredGenres = filteredGenres.map(e => {
+          console.log(e)
           if (e !== 'fiction' && e !== 'non-fiction') {
             return e;
           }
