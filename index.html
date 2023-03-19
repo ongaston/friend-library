@@ -48,6 +48,13 @@
       <h1 id='page-title'>Friend Library</h1>
 
       <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>
+      <div id="g_id_onload"
+        data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
+        data-context="use"
+        data-callback="getBooks()"
+        data-auto_select="true"
+        data-itp_support="true">
+      </div>
 
     </div>
 
@@ -177,13 +184,13 @@
 
     </main>
 
-    <script type="module" src="/resources/js-cookie/dist/js.cookie.mjs"></script>
+    <!--<script type="module" src="/resources/js-cookie/dist/js.cookie.mjs"></script>
     <script type="module">
       import Cookies from '/resources/js-cookie/dist/js.cookie.mjs'
     
       Cookies.set('foo', 'bar');
       console.log(Cookies.get())
-    </script>
+    </script>-->
     
     <!--create book elements-->
     <script type='text/javascript'>
