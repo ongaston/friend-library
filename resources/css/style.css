@@ -682,6 +682,10 @@ span {
         border-radius: 0;
     }
 
+    .book-container:hover {
+        background-color: var(--dark-white);
+    }
+
     .book-author,
     .book-title {
         vertical-align: sub;
@@ -689,6 +693,12 @@ span {
         margin-left: 0.2rem;
         color: var(--main-blue);
     }
+
+    .book-author {
+        margin-right: 0.2rem;
+    }
+
+
 
 
 }
