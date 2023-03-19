@@ -546,7 +546,7 @@
 
       function filterGenre() {
 
-        if (filteredGenres.every((e) => {return ((e == 'fiction' || e == 'non-fiction'))})){
+        if (!filteredGenres.every((e) => {return ((e == 'fiction' || e == 'non-fiction'))})){
           filteredGenres = filteredGenres.map((e) => {
             console.log(e)
             if ((e !== 'fiction' && e !== 'non-fiction')) {
