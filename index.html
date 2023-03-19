@@ -244,9 +244,15 @@
         if (book.status !== 'n') {
           document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
           document.getElementById('selected-status').innerText = normalizeString(book.status, false);
+          if ($('#mobile-check').css('display') == 'block') {
+            $('#selected-status').css('width', 'fit-content');
+          }
         } else {
           document.getElementById('selected-status').innerText = '';
           document.getElementById('selected-status').setAttribute('class', 'status');
+          if ($('#mobile-check').css('display') == 'block') {
+            $('#selected-status').css('width', '0');
+          }
         }
         document.getElementById('fiction-non-fiction').innerText = normalizeString(book.type, false);
         if (book.tw !== 'n') {
@@ -457,6 +463,10 @@
       function displayMain() {
         inlineToggle(document.getElementById('main'));
 
+        if ($(document.getElementById('mobile-check')).css('display') == 'block') {
+          $(document.getElementById('mobile-check')).css('flex-direction', 'row');
+        }
+
         setTimeout(() => {
           $('#load-book').css({
             display: 'none'
@@ -471,6 +481,8 @@
           $('#selected-book-container').css('flex-direction', 'row');
 
         }
+
+
 
       }
 
