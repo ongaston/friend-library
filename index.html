@@ -116,6 +116,16 @@
                 
                 <div id='filter-dropdown-container'>
 
+                  <label for='fiction-checkmark' class='container'>Fiction
+                    <input id='fiction-checkmark' type='checkbox' checked='true'>
+                    <span class='checkmark'></span>
+                  </label>
+
+                  <label for='nonfiction-checkmark' class='container'>Non-Fiction
+                    <input id='nonfiction-checkmark' type='checkbox' checked='true'>
+                    <span class='checkmark'></span>
+                  </label>
+
                   <div id='genre-filter-container'>
 
                     <p class='genre-filter'>Contemporary</p>
@@ -476,7 +486,7 @@
         if (firstClick) {
           firstClick = false;
 
-          $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 4 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
+          $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 3 + 10 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
           $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
         }
 
@@ -485,18 +495,17 @@
       let filterButtons = document.getElementsByClassName('genre-filter');
       for (let i = 0; i < filterButtons.length; i++) {
         $(filterButtons[i]).on('click', function() {
-          console.log('test');
           editFiltered(filterButtons[i].innerText.toLowerCase());
           filterGenre();
         })
       }
-      
+
     </script>
 
     <!--filter functions-->
     <script type='text/javascript'>
 
-      let filteredGenres = [];
+      let filteredGenres = ['fiction', 'non-fiction'];
 
       function getFiltered() {
         return filteredGenres;
@@ -517,7 +526,7 @@
           newActiveGenre.innerText = normalizeString(genre);
           $('#active-genre-container').append(newActiveGenre);
         }
-        console.log(filteredGenres);
+
       }
 
       function filterAlphabetical(a, b) {
@@ -598,6 +607,18 @@
 
       }
 
+      $('#fiction-checkmark').on('click', function() {
+
+        editFiltered('fiction');
+        filterGenre();
+
+      })
+
+      $('#nonfiction-checkmark').on('click', function() {
+        editFiltered('non-fiction');
+        filterGenre();
+      })
+
     </script>
 
     <!--classes and objects-->
@@ -614,10 +635,11 @@
       let courtneySheet;
       let alainaSheet;
 
-      function formatGenres(genres) {
+      function formatGenres(genres, type) {
 
           genres = genres.split(';');
           genres = genres.map(e => {return e.trim().toLowerCase()});
+          genres.push (type);
           return genres;
 
       }
@@ -629,7 +651,7 @@
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
-              this.genres = formatGenres(genres);
+              this.genres = formatGenres(genres, this.type);
               this.status = status.toLowerCase();
               this.seriesMember = seriesMember.toLowerCase();
               this.comments = comments.toLowerCase();
