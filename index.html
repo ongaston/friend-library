@@ -38,7 +38,7 @@
       }
 
       if (location.host !== 'ongaston.github.io') {
-        //$(window).on('load', testingView);
+        $(window).on('load', testingView);
       }
 
     </script>
@@ -565,7 +565,7 @@
             $('#active-genre-container').append(newActiveGenre);
           }
         }
-
+        console.log(filteredGenres);
       }
 
       function filterAlphabetical(a, b) {
