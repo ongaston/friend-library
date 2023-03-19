@@ -173,6 +173,7 @@ main {
     line-height: 4rem;
     margin-left: 3rem;
     overflow-wrap: break-word;
+    text-align: center;
 }
 
 #selected-title-container {
