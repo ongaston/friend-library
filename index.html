@@ -165,18 +165,20 @@
 
           <div id='book-list'>
 
-            <!--<div id = 'test-book' class='book-container' data-title="cain's jawbone">
+            <div id = 'test-book' class='book-container' data-title="cain's jawbone">
 
               <img class='book-cover' src='resources/media/test-cover.jpg'>
 
               <p class='book-title'>Cain's Jawbone</p>
               <p class='book-author'>Edward Powys Mathers</p>
 
-            </div>-->
+            </div>
 
           </div>
 
         </div>
+
+        <p id='mobile-check'></p>
 
     </main>
     
@@ -493,8 +495,14 @@
         if (firstClick) {
           firstClick = false;
 
-          $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 3 + 10 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
-          $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
+          if ($('#mobile-check').css('display') == 'none') {
+            $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 3 + 10 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
+            $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
+          } else {
+            $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 3 + document.getElementById('filter-label').getBoundingClientRect().height / 2 + 50).toString() + 'px');
+            $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
+          }
+
         }
 
       })
@@ -533,7 +541,7 @@
           newActiveGenre.innerText = normalizeString(genre);
           $('#active-genre-container').append(newActiveGenre);
         }
-        console.log(filteredGenres);
+
       }
 
       function filterAlphabetical(a, b) {
@@ -554,7 +562,7 @@
         if (filteredGenres.includes('fiction') && filteredGenres.includes('non-fiction')) {
           filteredGenres = filteredGenres.filter((e) => {return (e !== 'fiction' && e !== 'non-fiction')})
         }
-        console.log(filteredGenres);
+
 
         if (filteredGenres.length == 0) {
           clearBooks();
