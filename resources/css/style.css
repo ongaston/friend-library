@@ -670,10 +670,24 @@ span {
     }
 
     .book-container {
-        width: 98%;
+        width: 100%;
         flex-direction: row;
-        margin: 0.5rem 0;
+        margin: 0;
         height: auto;
+        justify-content: space-between;
+        background-color: var(--main-white);
+        border: 2px groove var(--dark-white);
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+
+    .book-author,
+    .book-title {
+        vertical-align: sub;
+        margin-top: 0;
+        margin-left: 0.2rem;
+        color: var(--main-blue);
     }
 
 
