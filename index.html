@@ -274,17 +274,19 @@
 
         for (let i = 0; i < book.genres.length; i++) {
 
-          let genreElement = document.createElement('p');
-          genreElement.setAttribute('class', 'selected-genre');
-          genreElement.innerText = normalizeString(book.genres[i], false);
-          document.getElementById('genre-container').appendChild(genreElement);
+          if (book.genres[i] !== 'fiction' && book.genres[i] !== 'non-fiction') {
+            let genreElement = document.createElement('p');
+            genreElement.setAttribute('class', 'selected-genre');
+            genreElement.innerText = normalizeString(book.genres[i], false);
+            document.getElementById('genre-container').appendChild(genreElement);
 
-          $(genreElement).on('click', function() {
+            $(genreElement).on('click', function() {
 
-            editFiltered(genreElement.innerText.toLowerCase());
-            filterGenre();
+              editFiltered(genreElement.innerText.toLowerCase());
+              filterGenre();
 
-          })
+            })
+          }
 
         }
         
