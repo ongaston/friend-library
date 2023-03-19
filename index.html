@@ -236,7 +236,7 @@
         document.getElementById('selected-cover').setAttribute('src', book.cover);
         document.getElementById('selected-title').innerText = normalizeString(book.title, false);
         document.getElementById('selected-author').innerText = normalizeString(book.author, false);
-        if (book.status !== 'n') {
+        if (book.status !== 'n' && book.status !== '') {
           document.getElementById('selected-status').setAttribute('class', 'status-' + (book.status));
           document.getElementById('selected-status').innerText = normalizeString(book.status, false);
           if ($('#mobile-check').css('display') == 'block') {
