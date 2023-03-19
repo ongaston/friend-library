@@ -460,10 +460,6 @@
       function displayMain() {
         inlineToggle(document.getElementById('main'));
 
-        if ($(document.getElementById('mobile-check')).css('display') == 'block') {
-          $(document.getElementById('mobile-check')).css('flex-direction', 'column');
-        }
-
         setTimeout(() => {
           $('#load-book').css({
             display: 'none'
@@ -475,7 +471,7 @@
 
         if ($('#selected-book-container').css('display') == 'none') {
           inlineToggle(document.getElementById('selected-book-container'));
-          $('#selected-book-container').css('flex-direction', 'row');
+          $('#selected-book-container').css('flex-direction', 'column');
 
         }
 
