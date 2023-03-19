@@ -38,7 +38,7 @@
       }
 
       if (location.host !== 'ongaston.github.io') {
-        $(window).on('load', testingView);
+        //$(window).on('load', testingView);
       }
 
     </script>
@@ -49,12 +49,22 @@
 
       <!--<button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>-->
       <div id="g_id_onload"
-        data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
-        data-context="use"
-        data-callback="getBooks"
-        data-auto_select="true"
-        data-itp_support="false">
-      </div>
+      data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="popup"
+      data-callback="getBooks"
+      data-auto_select="true"
+      data-itp_support="true">
+ </div>
+ 
+ <div class="g_id_signin"
+      data-type="standard"
+      data-shape="pill"
+      data-theme="outline"
+      data-text="signin"
+      data-size="large"
+      data-logo_alignment="left">
+ </div>
 
     </div>
 

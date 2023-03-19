@@ -134,6 +134,7 @@ main {
     background-color: var(--dark-white);
 }
 
+
 /* #region selected */
 #selected-book-container {
     display: none;
