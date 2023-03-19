@@ -546,6 +546,12 @@
 
       function filterGenre() {
 
+        filteredGenres = filteredGenres.map(e => {
+          if (e !== 'fiction' && e !== 'non-fiction') {
+            return e;
+          }
+        })
+
         if (filteredGenres.length == 0) {
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
@@ -605,6 +611,13 @@
             $(bookList).append(noResults);
           }
 
+        }
+
+        if (document.getElementById('fiction-checkmark').checked) {
+          filteredGenres.push('fiction');
+        }
+        if (document.getElementById('nonfiction-checkmark').checked) {
+          filteredGenres.push('non-fiction');
         }
 
       }
