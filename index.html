@@ -146,12 +146,7 @@
 
               </div>
 
-              <div id='active-genre-container'>
-
-                <p class='selected-genre'>Fiction</p>
-                <p class='selected-genre'>Non-Fiction</p>
-
-              </div>
+              <div id='active-genre-container'></div>
 
               <div id='search-bar-container'>
 
@@ -542,16 +537,18 @@
         if (filteredGenres.includes(genre)) {
           filteredGenres.splice(filteredGenres.indexOf(genre), (filteredGenres.indexOf(genre) + 1));
           for (let i = 0; i < document.getElementById('active-genre-container').children.length; i++) {
-            if (document.getElementById('active-genre-container').children[i].innerText.toLowerCase() == genre) {
+            if (document.getElementById('active-genre-container').children[i].innerText.toLowerCase() == genre && (genre !== 'fiction' && genre !== 'non-fiction')) {
               document.getElementById('active-genre-container').removeChild(document.getElementById('active-genre-container').children[i]);
             }
           }
         } else {
           filteredGenres.push(genre);
-          let newActiveGenre = document.createElement('p');
-          newActiveGenre.setAttribute('class', 'selected-genre');
-          newActiveGenre.innerText = normalizeString(genre);
-          $('#active-genre-container').append(newActiveGenre);
+          if (genre !== 'fiction' && genre !== 'non-fiction') {
+            let newActiveGenre = document.createElement('p');
+            newActiveGenre.setAttribute('class', 'selected-genre');
+            newActiveGenre.innerText = normalizeString(genre);
+            $('#active-genre-container').append(newActiveGenre);
+          }
         }
 
       }
