@@ -599,7 +599,7 @@ span {
     #selected-book-container {
         flex-direction: column;
         height: auto;
-        align-items: center;
+        align-items: start;
     }
 
     #selected-book-info-container {
