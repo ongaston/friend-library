@@ -617,10 +617,10 @@
 
         }
 
-        if (document.getElementById('fiction-checkmark').checked) {
+        if (document.getElementById('fiction-checkmark').checked && !filteredGenres.includes('fiction')) {
           filteredGenres.push('fiction');
         }
-        if (document.getElementById('nonfiction-checkmark').checked) {
+        if (document.getElementById('nonfiction-checkmark').checked && !filteredGenres.includes('non-fiction')) {
           filteredGenres.push('non-fiction');
         }
 
