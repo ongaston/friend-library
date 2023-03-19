@@ -47,7 +47,14 @@
 
       <h1 id='page-title'>Friend Library</h1>
 
-      <button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>
+      <!--<button id='authorize-button' onclick="authorizeGoogleAccess()" class='button'>Login</button>-->
+      <div id="g_id_onload"
+        data-client_id="568492347305-j8vnjb6h2a0m5ngeek8v5m98rq1o1c49.apps.googleusercontent.com"
+        data-context="use"
+        data-callback="getBooks"
+        data-auto_select="true"
+        data-itp_support="false">
+      </div>
 
     </div>
 
@@ -176,14 +183,6 @@
         <p id='mobile-check'></p>
 
     </main>
-
-    <script type="module" src="./resources/js-cookie/dist/js.cookie.mjs"></script>
-    <script type="module">
-      import Cookies from "./resources/js-cookie/dist/js.cookie.mjs"
-    
-      Cookies.set('foo', 'bar');
-      console.log(Cookies.get())
-    </script>
     
     <!--create book elements-->
     <script type='text/javascript'>
@@ -784,7 +783,6 @@
            */
           function gapiLoaded() {
             gapi.load('client', intializeGapiClient);
-
           }
     
           /**
@@ -864,6 +862,8 @@
            * https://docs.google.com/spreadsheets/d/1aSSi9jk2gBEHXOZNg7AV7bJj0muFNyPLYwh2GXThvas/edit
            */
           async function getBooks() {
+
+            hideLogin();
 
             try {
               taylorSheet = await gapi.client.sheets.spreadsheets.values.get({
@@ -1028,6 +1028,8 @@
             }
 
             addPageElements();
+
+            displayMain();
 
           }
 
