@@ -505,7 +505,6 @@
 
         if (firstClick) {
           firstClick = false;
-          console.log('test')
           $('*').on('click', hideDropdown);
           $(filterDropdown).off('click', hideDropdown);
           
@@ -532,6 +531,7 @@
       }
 
       function hideDropdown() {
+        console.log($(filterDropdown).css('display'));
         if ($(filterDropdown).css('display') == 'inline-flex') {
           console.log('test');
           $(filterDropdown).css('display', 'none');
