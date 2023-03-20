@@ -623,6 +623,9 @@
           this.type = null;
           this.owners = [];
 
+          document.getElementById('fiction-checkmark').setAttribute('checked', 'true');
+          document.getElementById('nonfiction-checkmark').setAttribute('checked', 'true');
+
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
             for (let j = 0; j < pageIndex.length; j++) {
