@@ -403,6 +403,21 @@ main {
     color: var(--dark-white);
 }
 
+#clear-filters-button {
+    color: var(--main-white);
+    position: absolute;
+    margin-left: 7rem;
+}
+
+#clear-filters-button:hover {
+    cursor: pointer;
+    color: var(--light-white);
+}
+
+#clear-filters-button:active {
+    color: var(--dark-white);
+}
+
 .checkmark {
     position: absolute;
     left: 0;

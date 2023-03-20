@@ -164,6 +164,8 @@
 
               <div id='active-genre-container'></div>
 
+              <div id='clear-filters-button'>Clear Filters</div>
+
               <div id='search-bar-container'>
 
                 <input id='search-bar' type='search' placeholder='Search'>
@@ -412,7 +414,7 @@
 
     </script>
 
-    <!--the to end and find owners-->
+    <!--the to end and find other works by author-->
     <script type='text/javascript'>
 
       function theToEnd(title) {
@@ -429,7 +431,16 @@
 
       }
 
+      $('#selected-author').on('click', function() {
 
+        filter.setFilter('author', document.getElementById('selected-author').innerText.toLowerCase());
+        filterBooks();
+
+      })
+
+      $('#clear-filters-button').on('click', function() {
+        filter.resetFilter();
+      })
 
     </script>
  
