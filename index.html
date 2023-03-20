@@ -523,8 +523,7 @@
       let filterButtons = document.getElementsByClassName('genre-filter');
       for (let i = 0; i < filterButtons.length; i++) {
         $(filterButtons[i]).on('click', function() {
-          editFiltered(filterButtons[i].innerText.toLowerCase());
-          filterGenre();
+          filter.setFilter('genre', filterButtons[i].innerText.toLowerCase());
         })
       }
 
