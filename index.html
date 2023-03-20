@@ -646,8 +646,8 @@
           console.log((filter.author == null || filter.author == noCopyArray[i]));
           console.log((filter.type == null || filter.type == noCopyArray[i].type));
           console.log((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})));
-          console.log((filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owners.includes(e)})));
-          if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owners.includes(e)})))) {
+          console.log((filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})));
+          if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})))) {
             filteredBooks.push(noCopyArray[i]);
           }
 
