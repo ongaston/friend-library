@@ -299,8 +299,7 @@
 
             $(genreElement).on('click', function() {
 
-              editFiltered(genreElement.innerText.toLowerCase());
-              filterGenre();
+
 
             })
           }
@@ -776,6 +775,7 @@
           filter.setFilter('type', 'non-fiction');
         }
 
+        filterBooks();
       })
 
       $('#nonfiction-checkmark').on('click', function() {
@@ -786,6 +786,8 @@
         } else if (!document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked) {
           filter.setFilter('type', 'non-fiction');
         }
+
+        filterBooks();
       })
 
     </script>
