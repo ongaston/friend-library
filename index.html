@@ -272,7 +272,7 @@
         } else {
           document.getElementById('tw').innerText = 'TW: ';
         }
-        document.getElementById('owners').innerText = 'Owner(s): ' + findOwners(book.title);
+        document.getElementById('owners').innerText = 'Owner(s): ' + normalizeString(book.owner.join(' '));
         if (book.comments !== 'n') {
           document.getElementById('comments').innerText = book.comments;
         } else {
@@ -430,15 +430,7 @@
 
       }
 
-      function findOwners(title) {
-        let owners = [];
-        for (let i = 0; i < bookArray.length; i++) {
-          if (bookArray[i].title == title) {
-            owners.push(bookArray[i].owner);
-          }
-        }
-        return owners.join(' ');
-      }
+
 
     </script>
  
@@ -619,17 +611,6 @@
 
       }
       
-      //filter.setFilter('author', 'test value');
-      //filter.setFilter('genre', ['array value', 'array value']);
-      filter.setFilter('type', 'fiction');
-      filter.setFilter('owners', ['Liv']);
-      
-      //console.log(filter.getFilters('author'));
-      //console.log(filter.getFilters());
-
-      //filter.resetFilter('author');
-      //filter.resetFilter('genre');
-      //console.log(filter.getFilters())
 
       function filterBooks() {
         
@@ -648,7 +629,24 @@
           }
 
         }
-        console.log(filteredBooks);
+        
+        clearBooks();
+
+        $(bookList).remove('h1');
+
+        for (let i = 0; i < filteredBooks.length; i++) {
+          createBookElement(filteredBooks[i]);
+        }
+
+        if (document.getElementById('book-list').children.length !== 0) {
+          hideSelected();
+        } else {
+          let noResults = document.createElement('h1');
+          noResults.setAttribute('id', 'no-results');
+          noResults.innerText = 'No results for current search';
+          $(bookList).append(noResults);
+        }
+
 
       }
 
@@ -766,20 +764,30 @@
           filteredGenres.push('non-fiction');
         }
 
-      }
+      }*/
 
       $('#fiction-checkmark').on('click', function() {
 
-        editFiltered('fiction');
-        filterGenre();
+        if (document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked == false) {
+          filter.setFilter('type', 'fiction');
+        } else if((document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked) || (!document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked == false)) {
+          filter.resetFilter('type');
+        } else if (!document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked) {
+          filter.setFilter('type', 'non-fiction');
+        }
 
       })
 
       $('#nonfiction-checkmark').on('click', function() {
-        editFiltered('non-fiction');
-        filterGenre();
+        if (document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked == false) {
+          filter.setFilter('type', 'fiction');
+        } else if((document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked) || (!document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked == false)) {
+          filter.resetFilter('type');
+        } else if (!document.getElementById('fiction-checkmark').checked && document.getElementById('nonfiction-checkmark').checked) {
+          filter.setFilter('type', 'non-fiction');
+        }
       })
-*/
+
     </script>
 
     <!--classes and objects-->
@@ -1112,7 +1120,6 @@
                 noCopyArray.push(bookArray[i]);
               } else {
                 let foundBook = noCopyArray.find(e => {return e.title == bookArray[i].title});
-                console.log(foundBook);
                 foundBook.owner.push(bookArray[i].owner[0]);
               }
 
@@ -1154,7 +1161,6 @@
 
             displayMain();
 
-            filterBooks();
 
           }
 
