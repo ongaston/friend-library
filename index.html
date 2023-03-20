@@ -299,7 +299,7 @@
 
             $(genreElement).on('click', function() {
 
-
+              filter.setFilter('genre', book.genres[i]);
 
             })
           }
@@ -541,10 +541,16 @@
         type: null,
         owners: [],
         setFilter(name, propertyValue) {
-          Object.defineProperty(this, name, {
-            value: propertyValue,
-            writable: true
-          })
+          if (name == 'author' || name == 'type') {
+            Object.defineProperty(this, name, {
+              value: propertyValue,
+              writable: true
+            })
+          } else if (name == 'genre') {
+            this.genre.push(propertyValue);
+          } else if (name == 'owners') {
+            this.owners.push(propertyValue);
+          }
         },
         getFilters(name = null) {
           if (name) {
