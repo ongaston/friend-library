@@ -643,10 +643,6 @@
 
         for (let i = 0; i < noCopyArray.length; i++) {
 
-          console.log((filter.author == null || filter.author == noCopyArray[i]));
-          console.log((filter.type == null || filter.type == noCopyArray[i].type));
-          console.log((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})));
-          console.log((filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})));
           if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})))) {
             filteredBooks.push(noCopyArray[i]);
           }
@@ -1114,6 +1110,10 @@
 
               if (noCopyArray.every((e => {return e.title !== bookArray[i].title}))) {
                 noCopyArray.push(bookArray[i]);
+              } else {
+                let foundBook = noCopyArray.find(e => {return e.title == bookArray[i].title});
+                console.log(foundBook);
+                foundBook.owner.push(bookArray[i].owner);
               }
 
               
