@@ -434,7 +434,6 @@
       $('#selected-author').on('click', function() {
 
         filter.setFilter('author', document.getElementById('selected-author').innerText.toLowerCase());
-        console.log(filter.getFilters('author'));
         filterBooks();
 
       })
@@ -659,7 +658,7 @@
 
         for (let i = 0; i < noCopyArray.length; i++) {
 
-          if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})))) {
+          if (((filter.author == null || filter.author == noCopyArray[i].author) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owner.includes(e)})))) {
             filteredBooks.push(noCopyArray[i]);
           }
 
