@@ -1113,7 +1113,7 @@
               } else {
                 let foundBook = noCopyArray.find(e => {return e.title == bookArray[i].title});
                 console.log(foundBook);
-                foundBook.owner.push(bookArray[i].owner);
+                foundBook.owner.push(bookArray[i].owner[0]);
               }
 
               
