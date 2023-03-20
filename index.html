@@ -531,9 +531,9 @@
       }
 
       function hideDropdown() {
-        console.log($(filterDropdown).css('display'));
-        if ($(filterDropdown).css('display') == 'inline-flex') {
-          console.log('test');
+
+        if ($(filterDropdown).css('display') == 'flex') {
+
           $(filterDropdown).css('display', 'none');
         }
       }
