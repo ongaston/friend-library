@@ -622,7 +622,7 @@
       //filter.setFilter('author', 'test value');
       //filter.setFilter('genre', ['array value', 'array value']);
       filter.setFilter('type', 'fiction');
-      filter.setFilter('owners', ['liv']);
+      filter.setFilter('owners', ['Liv']);
       
       //console.log(filter.getFilters('author'));
       //console.log(filter.getFilters());
@@ -638,12 +638,13 @@
 
         if (filter.getFilters().length == 0) {
           filter.emptyFilters();
-          console.log('test');
           return;
         } 
 
         for (let i = 0; i < noCopyArray.length; i++) {
 
+          console.log((filter.author == null || filter.author == noCopyArray[i]));
+          console.log((filter.type == null || filter.type == noCopyArray[i].type))
           if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owners.includes(e)})))) {
             filteredBooks.push(noCopyArray[i]);
           }
