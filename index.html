@@ -540,11 +540,121 @@
     </script>
 
     <!--filter functions-->
-    <script type='text/javascript'>
+    <script async type='text/javascript'>
 
       let filteredGenres = ['fiction', 'non-fiction'];
 
-      function getFiltered() {
+      let filter = {
+        author: null,
+        genre: [],
+        type: null,
+        owners: [],
+        setFilter(name, propertyValue) {
+          Object.defineProperty(this, name, {
+            value: propertyValue,
+            writable: true
+          })
+        },
+        getFilters(name = null) {
+          if (name) {
+            return Object.getOwnPropertyDescriptor(this, name).value;
+          } else {
+            let filterArray = [];
+            for (const [key, value] of Object.entries(this)) {
+
+              if (((key !== 'setFilter' && key !== 'getFilters') && (key !== 'resetFilter' && key !== 'emptyFilters')) && (value && value.length !== 0) ) {
+                filterArray.push([key, value]);
+              }
+
+            }
+            return filterArray;
+          }
+        },
+        resetFilter(name) {
+          switch (name) {
+            case 'author':
+            case 'type':
+              Object.defineProperty(this, name, {
+                value: null,
+                writable: true
+              })
+              break;
+            case 'genre':
+            case 'owners':
+              Object.defineProperty(this, name, {
+                value: [],
+                writable: true
+              })
+              break;
+          }
+        },
+        emptyFilters() {
+          this.author = null;
+          this.genre = [];
+          this.type = null;
+          this.owners = [];
+
+          clearBooks();
+          let pageIndex = pageArray[Number(currentPage) - 1];
+            for (let j = 0; j < pageIndex.length; j++) {
+
+              createBookElement(pageIndex[j]);
+
+            }
+
+            addPageElements();
+
+            if (currentPage == 1) {
+              document.getElementById('previous-page').style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              document.getElementById('previous-page').style.color = 'hsla(30, 40%, 84%, 1)';
+            }
+
+            if (currentPage == pageArray.length) {
+              document.getElementById('next-page').style.color = 'hsla(30, 10%, 40%, 1)';
+            } else {
+              document.getElementById('next-page').style.color = 'hsla(30, 40%, 84%, 1)';
+            }
+        }
+
+      }
+      
+      //filter.setFilter('author', 'test value');
+      //filter.setFilter('genre', ['array value', 'array value']);
+      filter.setFilter('type', 'fiction');
+      filter.setFilter('owners', ['liv']);
+      
+      //console.log(filter.getFilters('author'));
+      //console.log(filter.getFilters());
+
+      //filter.resetFilter('author');
+      //filter.resetFilter('genre');
+      //console.log(filter.getFilters())
+
+      function filterBooks() {
+        
+        let filteredBooks = [];
+
+
+        if (filter.getFilters().length == 0) {
+          filter.emptyFilters();
+          return;
+        } 
+
+        for (let i = 0; i < noCopyArray.length; i++) {
+
+          if (((filter.author == null || filter.author == noCopyArray[i]) && (filter.type == null || filter.type == noCopyArray[i].type)) && ((filter.genre.length == 0 || filter.genre.every(e => {return noCopyArray[i].genres.includes(e)})) && (filter.owners.length == 0 || filter.owners.every(e => {return noCopyArray[i].owners.includes(e)})))) {
+            filteredBooks.push(noCopyArray[i]);
+          }
+
+        }
+        console.log(filteredBooks);
+
+      }
+
+
+
+      /*function getFiltered() {
         return filteredGenres;
       }
 
@@ -669,7 +779,7 @@
         editFiltered('non-fiction');
         filterGenre();
       })
-
+*/
     </script>
 
     <!--classes and objects-->
@@ -686,11 +796,10 @@
       let courtneySheet;
       let alainaSheet;
 
-      function formatGenres(genres, type) {
+      function formatGenres(genres) {
 
           genres = genres.split(';');
           genres = genres.map(e => {return e.trim().toLowerCase()});
-          genres.push (type);
           return genres;
 
       }
@@ -702,7 +811,7 @@
               this.title = title.toLowerCase();
               this.author = author.toLowerCase();
               this.type = type.toLowerCase();
-              this.genres = formatGenres(genres, this.type);
+              this.genres = formatGenres(genres);
               this.status = status.toLowerCase();
               this.seriesMember = seriesMember.toLowerCase();
               this.comments = comments.toLowerCase();
@@ -1048,7 +1157,9 @@
           function getCurrentPage() {
             return currentPage;
           }
-
+          function getPageArray() {
+            return pageArray;
+          }
           function addPageElements() {
 
           let pageButtonContainer = document.createElement('nav');
@@ -1187,7 +1298,7 @@
           }
 
 
-
+          filterBooks();
         
     </script>
 
