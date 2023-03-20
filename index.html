@@ -433,7 +433,11 @@
 
       $('#selected-author').on('click', function() {
 
-        filter.setFilter('author', document.getElementById('selected-author').innerText.toLowerCase());
+        if (filter.getFilters('author') == document.getElementById('selected-author').innerText.toLowerCase()) {
+          filter.resetFilter('author');
+        } else {
+          filter.setFilter('author', document.getElementById('selected-author').innerText.toLowerCase());
+        }
         filterBooks();
 
       })
