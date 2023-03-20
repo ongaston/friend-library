@@ -300,6 +300,7 @@
             $(genreElement).on('click', function() {
 
               filter.setFilter('genre', book.genres[i]);
+              filterBooks();
 
             })
           }
@@ -477,12 +478,9 @@
 
       function showSelected() {
 
-        if ($('#selected-book-container').css('display') == 'block') {
-          inlineToggle(document.getElementById('selected-book-container'));
-          $('#selected-book-container').css('flex-direction', 'column');
 
-        }  else {
-          inlineToggle(document.getElementById('selected-book-container'));
+        inlineToggle(document.getElementById('selected-book-container'));
+        if ($('#mobile-check').css('display') == 'none') {
           $('#selected-book-container').css('flex-direction', 'row');
         }
 
