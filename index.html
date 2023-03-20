@@ -434,12 +434,14 @@
       $('#selected-author').on('click', function() {
 
         filter.setFilter('author', document.getElementById('selected-author').innerText.toLowerCase());
+        console.log(filter.getFilters('author'));
         filterBooks();
 
       })
 
       $('#clear-filters-button').on('click', function() {
         filter.resetFilter();
+        filterBooks();
       })
 
     </script>

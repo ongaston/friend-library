@@ -191,6 +191,15 @@ main {
     margin-top: 1rem;
 }
 
+#selected-author:hover {
+    cursor: pointer;
+    color: var(--light-white);
+}
+
+#selected-author:active {
+    color: var(--main-white);
+}
+
 #selected-status {
     font-size: 18px;
     text-decoration: none;
