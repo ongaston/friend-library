@@ -69,7 +69,6 @@
     </div>
 
     <span id='load-book'><i class='fa-solid fa-book-open fa-beat-fade fa-4x'></i></span>
-
     <main id='main'>
 
         <pre id='content'></pre>
@@ -417,9 +416,8 @@
     <script type='text/javascript'>
 
       function theToEnd(title) {
-        console.log(title.toLowerCase().substring(0,3));
+
         if (title.toLowerCase().substring(0,3) == 'the') {
-          console.log(title.slice(4).concat(', the'));
 
           return title.slice(4).concat(', the');
 
@@ -508,6 +506,10 @@
         if (firstClick) {
           firstClick = false;
 
+          $('*').on('click', hideDropdown);
+          $(filterDropdown).off('click', hideDropdown);
+          
+
           if ($('#mobile-check').css('display') == 'none') {
             $(filterDropdown).css('bottom', '-' + (filterDropdown.getBoundingClientRect().height / 3 + 10 + document.getElementById('filter-label').getBoundingClientRect().height / 2).toString() + 'px');
             $(filterDropdown).css('left', ((document.getElementById('filter-label').getBoundingClientRect().left - filterDropdown.getBoundingClientRect().left) / 2).toString() + 'px');
@@ -526,6 +528,13 @@
           filter.setFilter('genre', filterButtons[i].innerText.toLowerCase());
           filterBooks();
         })
+        $(filterButtons[i]).off('click', hideDropdown);
+      }
+
+      function hideDropdown() {
+        if ($(filterDropdown).css('display') == 'inline-flex') {
+          $(filterDropdown).css('display', 'none');
+        }
       }
 
     </script>
@@ -664,32 +673,6 @@
 
       }
 
-
-
-      /*function getFiltered() {
-        return filteredGenres;
-      }
-
-      function editFiltered(genre) {
-        if (filteredGenres.includes(genre)) {
-          filteredGenres.splice(filteredGenres.indexOf(genre), (filteredGenres.indexOf(genre) + 1));
-          for (let i = 0; i < document.getElementById('active-genre-container').children.length; i++) {
-            if (document.getElementById('active-genre-container').children[i].innerText.toLowerCase() == genre && (genre !== 'fiction' && genre !== 'non-fiction')) {
-              document.getElementById('active-genre-container').removeChild(document.getElementById('active-genre-container').children[i]);
-            }
-          }
-        } else {
-          filteredGenres.push(genre);
-          if (genre !== 'fiction' && genre !== 'non-fiction') {
-            let newActiveGenre = document.createElement('p');
-            newActiveGenre.setAttribute('class', 'selected-genre');
-            newActiveGenre.innerText = normalizeString(genre);
-            $('#active-genre-container').append(newActiveGenre);
-          }
-        }
-        console.log(filteredGenres);
-      }
-*/
       function filterAlphabetical(a, b) {
 
         if (a.alphabeticalTitle.charCodeAt(0) < b.alphabeticalTitle.charCodeAt(0)) {
@@ -702,83 +685,6 @@
         return 0;
 
       }
-
-      /*function filterGenre() {
-
-        if (filteredGenres.includes('fiction') && filteredGenres.includes('non-fiction')) {
-          filteredGenres = filteredGenres.filter((e) => {return (e !== 'fiction' && e !== 'non-fiction')})
-        }
-
-
-        if (filteredGenres.length == 0) {
-          clearBooks();
-          let pageIndex = pageArray[Number(currentPage) - 1];
-            for (let j = 0; j < pageIndex.length; j++) {
-
-              createBookElement(pageIndex[j]);
-
-            }
-
-            addPageElements();
-
-            if (currentPage == 1) {
-              document.getElementById('previous-page').style.color = 'hsla(30, 10%, 40%, 1)';
-            } else {
-              document.getElementById('previous-page').style.color = 'hsla(30, 40%, 84%, 1)';
-            }
-
-            if (currentPage == pageArray.length) {
-              document.getElementById('next-page').style.color = 'hsla(30, 10%, 40%, 1)';
-            } else {
-              document.getElementById('next-page').style.color = 'hsla(30, 40%, 84%, 1)';
-            }
-        } 
-
-        if (filteredGenres.length > 0) {
-
-          clearBooks();
-
-          $(bookList).remove('h1');
-
-          for (let i = 0; i < bookList.children.length; i++) {
-
-            let book = noCopyArray.find(e => {return (e.title == bookList.children[i].dataset.title)});
-
-            if (!(filteredGenres.every(e => {return book.genres.includes(e)}))) {
-              $(bookList).remove(bookList.children[i]);
-            }
-
-          }
-
-          for (let i = 0; i < noCopyArray.length; i++) {
-
-            if (filteredGenres.every(e => {return noCopyArray[i].genres.includes(e)})) {
-
-              createBookElement(noCopyArray[i]);
-
-            }
-
-          }
-
-          if (document.getElementById('book-list').children.length !== 0) {
-            hideSelected();
-          } else {
-            let noResults = document.createElement('h1');
-            noResults.setAttribute('id', 'no-results');
-            noResults.innerText = 'No results for current search';
-            $(bookList).append(noResults);
-          }
-
-        }
-
-        if (document.getElementById('fiction-checkmark').checked && !filteredGenres.includes('fiction')) {
-          filteredGenres.push('fiction');
-        }
-        if (document.getElementById('nonfiction-checkmark').checked && !filteredGenres.includes('non-fiction')) {
-          filteredGenres.push('non-fiction');
-        }
-
-      }*/
 
       $('#fiction-checkmark').on('click', function() {
 
