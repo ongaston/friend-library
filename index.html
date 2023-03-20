@@ -506,6 +506,7 @@
         if (firstClick) {
           firstClick = false;
           $('*').on('click', hideDropdown);
+          $(filterLabel).off('click', hideDropdown);
           $('body').on('click', function(e) {
             console.log(e);
           })
