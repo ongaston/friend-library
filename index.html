@@ -623,8 +623,8 @@
           this.type = null;
           this.owners = [];
 
-          document.getElementById('fiction-checkmark').setAttribute('checked', 'true');
-          document.getElementById('nonfiction-checkmark').setAttribute('checked', 'true');
+          $('#fiction-checkmark').trigger('click');
+          $('#nonfiction-checkmark').trigger('click');
 
           clearBooks();
           let pageIndex = pageArray[Number(currentPage) - 1];
