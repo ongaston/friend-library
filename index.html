@@ -547,9 +547,18 @@
               writable: true
             })
           } else if (name == 'genre') {
-            this.genre.push(propertyValue);
+            if  (!this.genre.includes(propertyValue)) {
+              this.genre.push(propertyValue);
+            } else {
+              this.genre.splice(this.genre.indexOf(propertyValue), 1);
+            }
+
           } else if (name == 'owners') {
-            this.owners.push(propertyValue);
+            if (!this.owners.includes(propertyValue)) {
+              this.owners.push(propertyValue);
+            } else {
+              this.owners.splice(this.owners.indexOf(propertyValue), 1);
+            }
           }
         },
         getFilters(name = null) {
